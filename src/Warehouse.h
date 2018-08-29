@@ -12,7 +12,8 @@
 #include <vector>
 #include <fstream>
 #include <cstring>
-
+#include <stdlib.h>
+#include <sstream>
 #include "Product.h"
 
 class Warehouse {

@@ -10,6 +10,7 @@
 #include <string>
 #include <conio.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include "Warehouse.h"
 
