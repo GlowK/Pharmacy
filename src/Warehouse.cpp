@@ -17,6 +17,10 @@ Warehouse::~Warehouse() {
 }
 
 void Warehouse::addProduct(Product p){
+	/*
+	 * Funkcja dodaj¹ca nowy produkt na koniec vectora, moze sie
+	 * przydac przy dodawaniu zupelnie nowego produktu
+	 */
 	this->availableProducts.push_back(p);
 }
 
@@ -37,10 +41,12 @@ void Warehouse::showAllProducts() const{
 }
 
 void Warehouse::fillWarehouseWithProducts(){
-
+	/*
+	 * TODO - Rozbudowac razem jak bedzie rosl produkt
+	 */
 	fstream inputfile;
 	string line;
-	inputfile.open("C:/Users/mediaexpert/eclipse-workspace/Pharmacy/src/test.csv", ios::in);
+	inputfile.open("test.csv", ios::in);
 
 	while(getline(inputfile,line)){
 		istringstream iss(line);

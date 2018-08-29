@@ -37,11 +37,15 @@ void Menu::showUserMenu(Warehouse *apteka){
 
 			switch (menuChoice)
 			{
-				case 1:
-					//Dodaj nowy produkt do magazynu
+				case 1://Dodaj nowy produkt do magazynu
+					/*
+					 * TODO - Dodanie zupelnie nowego produktu
+					 */
 					break;
-				case 2:
-					//Dodaj produkty
+				case 2: //Dodaj produkty
+					/*
+					 * TODO - Mozna zmienic na zmien ilosc produktow lub
+					 */
 					break;
 				case 3: // Wypisywanie wszystkich produktow
 				{
@@ -70,20 +74,27 @@ void Menu::showUserMenu(Warehouse *apteka){
 
 					break;
 				}
-				case 5:
-					//Zmien dane produktu
+				case 5: //Zmien dane produktu
+					/*
+					 * TODO - Zmiana danych dla produktu z tablicy poprzez getery i settery
+					 */
 					break;
-				case 6:
-					//Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
+				case 6: //Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
+
+					/*
+					 * TODO - Nowy format wyswietlania
+					 */
 					break;
 				case 7 :
-					// UUUU tutaj to jakas wieksza operacja sie szykuje
+					/*
+					 * TODO - ROZWOJ, NOWE FUNKCJE JAK SKONCZYMY TE WYZEJ
+					 */
 					break;
 				case 8:
 					cout << "Zakonczenie dzialnia programu" << endl;
 					break;
 				default:
-					cout << "Bad input motherfucker" << endl;
+					cout << "Niepoprawne dane" << endl;
 					break;
 			}
 
@@ -94,6 +105,10 @@ void Menu::showAdminMenu(){
 		char choice;
 		do
 		{
+
+			/*
+			 * TODO - CALA NOWA OPJCA FUNKCJI
+			 */
 
 			system("CLS");
 			cout << "Witaj a panelu administracyjnym" <<endl << endl;

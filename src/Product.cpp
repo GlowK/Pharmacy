@@ -25,6 +25,9 @@ Product::~Product() {
 }
 
 void Product::display_product(int length) const{
+	/*
+	 * TODO - Sprobowac skasowac magic numbers, ustalanie dydanmiczne tresci na podstawie dlugosci
+	 */
 	cout << setw(5) << left << product_number << "|";
 	cout << setw(length) << left << product_name << "|";
 	cout << fixed << setprecision(2) << setw(10) << left  << product_price << "|";
@@ -32,6 +35,9 @@ void Product::display_product(int length) const{
 }
 
 void Product::display_table_names(int length) {
+	/*
+	 * TODO - Musi miec parametry jak w funkcji display_product
+	 */
 	cout << setw(5) << left << "ID" << "|";
 	cout << setw(length) << left << "Nazwa" << "|";
 	cout << setw(10) << left << "Cena" << "|";
