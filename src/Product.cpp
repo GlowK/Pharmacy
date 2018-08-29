@@ -37,6 +37,9 @@ void Product::display_product(int length) const{
 void Product::display_table_names(int length) {
 	/*
 	 * TODO - Musi miec parametry jak w funkcji display_product
+	 *
+	 * TODO - Koniecznie zrobic jakas funkcje ktora wyspiuje odpowiednia ilosc "-"
+	 * 			rown¹ sumie wartosci x z setw(x)
 	 */
 	cout << setw(5) << left << "ID" << "|";
 	cout << setw(length) << left << "Nazwa" << "|";
