@@ -31,7 +31,8 @@ void Menu::showUserMenu(Warehouse *apteka){
 			cout << "5) Zmien dane produktu"<<endl;
 			cout << "6) Wyswietl dane leku"<<endl;
 			cout << "7) Zamow towar" <<endl;
-			cout << "8) EXIT" <<endl;
+			cout << "8) Pokaz towary o niskim stanie magazynowym" <<endl;
+			cout << "9) EXIT" <<endl;
 			cout << "Wybierz opcje: ";
 			cin >> menuChoice;
 
@@ -91,14 +92,25 @@ void Menu::showUserMenu(Warehouse *apteka){
 					 */
 					break;
 				case 8:
+					system("cls");
+					int quantity;
+					cout << " Produkty o niskim stanie. Ponizej :";
+					cin >> quantity;
+					apteka->showProductsLowQuantity(quantity);
+					cout << endl;
+					system("Pause");
+					break;
+				case 9:
 					cout << "Zakonczenie dzialnia programu" << endl;
 					break;
+
+
 				default:
 					cout << "Niepoprawne dane" << endl;
 					break;
 			}
 
-		}while(menuChoice != 8);
+		}while(menuChoice != 9);
 }
 
 void Menu::showAdminMenu(){

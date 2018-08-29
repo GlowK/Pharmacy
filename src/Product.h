@@ -38,6 +38,10 @@ public:
 	int getProductNumber() const {
 		return product_number;
 	}
+
+	int getProductQuantity() const {
+		return product_quantity;
+	}
 };
 
 #endif /* PRODUCT_H_ */
