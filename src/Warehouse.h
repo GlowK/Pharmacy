@@ -24,10 +24,12 @@ public:
 	Warehouse();
 	virtual ~Warehouse();
 	void addProduct(Product);
-	void showAllProducts() const;
+	void showAllProducts();
+	void showProductsLowQuantity(int);
 	void fillWarehouseWithProducts();
 	void eraseElementByPosition(int);
-
+	int checkNameColumnLength();
+	void showProductColumns();
 };
 
 #endif /* WAREHOUSE_H_ */

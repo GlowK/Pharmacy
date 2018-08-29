@@ -24,21 +24,44 @@ void Warehouse::addProduct(Product p){
 	this->availableProducts.push_back(p);
 }
 
-void Warehouse::showAllProducts() const{
 
+int  Warehouse::checkNameColumnLength(){
 	int nameColumnLength = 2;
-	for(Product p : this->availableProducts){
-		if (p.getProductName().length() > nameColumnLength){
-			nameColumnLength = p.getProductName().length();
+		for(Product p : this->availableProducts){
+			if (p.getProductName().length() > nameColumnLength){
+				nameColumnLength = p.getProductName().length();
+			}
 		}
-	}
+	return nameColumnLength+1;
+}
+
+void Warehouse::showProductColumns(){
 	Product *temp = new Product(1, "temp", 1,1);
-		temp->display_table_names(nameColumnLength+1);
-		delete temp;
+	temp->display_table_names(this->checkNameColumnLength());
+	delete temp;
+}
+
+void Warehouse::showAllProducts(){
+	this->showProductColumns();
+
 	for(Product p : this->availableProducts){
-		p.display_product(nameColumnLength+1);
+		p.display_product(this->checkNameColumnLength());
 	}
 }
+
+
+void Warehouse::showProductsLowQuantity(int quantity){
+	this->showProductColumns();
+	for(Product p : this->availableProducts){
+		if(p.getProductQuantity() <= quantity){
+			p.display_product(this->checkNameColumnLength());
+		}
+	}
+}
+
+
+
+
 
 void Warehouse::fillWarehouseWithProducts(){
 	/*
