@@ -50,7 +50,15 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 				break;
 			}
 			case 3 :
+			{
+				cout << "Jaki produkty wg Kategorii chcesz skasowac" << endl;
+				string eraseCategory;
+				cin >> eraseCategory;
+				apteka->eraseElementByCategory(eraseCategory);
+				cout << "Produkt wykasowany" << endl;
+				system("Pause");
 				break;
+			}
 			case 4 :
 				break;
 			default :

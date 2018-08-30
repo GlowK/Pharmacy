@@ -44,6 +44,10 @@ public:
 	int getProductQuantity() const {
 		return product_quantity;
 	}
+
+	const string& getProductCategory() const {
+		return product_category;
+	}
 };
 
 #endif /* PRODUCT_H_ */

@@ -29,6 +29,7 @@ public:
 	void fillWarehouseWithProducts();
 	void eraseElementByPosition(int);
 	void eraseElementByName(string);
+	void eraseElementByCategory(string);
 	int checkNameColumnLength();
 	void showProductColumns();
 };

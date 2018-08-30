@@ -138,3 +138,16 @@ void Warehouse::eraseElementByName(string name){
 			}
 	}
 }
+
+void Warehouse::eraseElementByCategory(string category){
+	int i = 0;
+	for(Product p : this->availableProducts){
+			if(p.getProductCategory() == category){
+				availableProducts.erase(availableProducts.begin()+i);
+				this->eraseElementByCategory(category);
+				break;
+			}else{
+				i++;
+			}
+	}
+}
