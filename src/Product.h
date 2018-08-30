@@ -29,8 +29,9 @@ public:
 	Product();
 	Product(int, string, float, int);
 	Product(int, string, string, string, float, int, string);
-	void display_product(int) const;
-	void display_table_names(int);
+	void display_product(int, int) const;
+	void display_table_names(int, int);
+	void display_full_information();
 	virtual ~Product();
 
 	const string& getProductName() const {

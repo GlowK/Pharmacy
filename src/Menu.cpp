@@ -57,17 +57,21 @@ void Menu::showUserMenu(Warehouse *apteka){
 					apteka->showAllProducts();
 					cout << endl;
 					system("Pause");
+					char isDetails = 'a';
+					cout << "Czy chcesz wyswietlic szczegoly jakiegos produktu? T/N :";
+					cin >> isDetails;
+					if (isDetails == 'T'){
+						menuOptions.showProductDetailsOption(apteka, 0);
+					}
 					break;
 				}
 				case 4: // Kasowanie produktu
 				{
 					/*
-					 * TODO - wybor wg jakiego kryterium mozna kasowac, index, nazwa, stan magazynowy
 					 * TODO - wyswietleie produktu czy aby na pewno ten chemy skasowac T/N
-					 *
 					 */
 					menuOptions.eraseProductOption(apteka);
-				break;
+					break;
 				}
 				case 5: //Zmien dane produktu
 					/*
@@ -76,9 +80,7 @@ void Menu::showUserMenu(Warehouse *apteka){
 					break;
 				case 6: //Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
 
-					/*
-					 * TODO - Nowy format wyswietlania
-					 */
+					menuOptions.showProductDetailsOption(apteka, 1);
 					break;
 				case 7 :
 					/*

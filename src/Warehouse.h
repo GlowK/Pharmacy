@@ -27,11 +27,13 @@ public:
 	void showAllProducts();
 	void showProductsLowQuantity(int);
 	void fillWarehouseWithProducts();
-	void eraseElementByPosition(int);
+	void eraseElementById(int);
 	void eraseElementByName(string);
 	void eraseElementByCategory(string);
 	int checkNameColumnLength();
+	int checkCategoryColumnLength();
 	void showProductColumns();
+	void showProductDetailsThroughIndex(int);
 };
 
 #endif /* WAREHOUSE_H_ */

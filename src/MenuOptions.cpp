@@ -34,7 +34,7 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 				cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
 				int index = 0;
 				cin >> index;
-				apteka->eraseElementByPosition(index);
+				apteka->eraseElementById(index);
 				cout << "Produkt wykasowany" << endl;
 				system("Pause");
 				break;
@@ -60,6 +60,48 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 				break;
 			}
 			case 4 :
+				break;
+			default :
+				break;
+		}
+}
+
+
+void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFlag){
+
+	if(clearScreenFlag == 1){
+		system("cls");
+	}
+	cout << "W jaki sposob wyswietlic szczegoly produktu?" << endl;
+	cout << "1) Poprzez ID produktu" << endl;
+	cout << "2) Poprzez Nazwe produktu" << endl;
+	cout << "3) Anuluj operacje" << endl;
+	cout << "Wprowadz wybor: ";
+
+	int showDetailsChoice = 0;
+	cin >> showDetailsChoice;
+
+		switch(showDetailsChoice)
+		{
+			case 1 :
+			{
+				cout << "Podaj ID do pokazania szczeglow" << endl;
+				int byIndex = 0;
+				cin >> byIndex;
+				apteka->showProductDetailsThroughIndex(byIndex);
+				system("Pause");
+				break;
+			}
+			case 2 :
+			{
+				cout << "Podaj Nazwe dla pokazania szczegolow" << endl;
+				string byName;
+				cin >> byName;
+				//apteka->eraseElementByName(byName);
+				system("Pause");
+				break;
+			}
+			case 3 :
 				break;
 			default :
 				break;
