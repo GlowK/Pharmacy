@@ -20,31 +20,66 @@ Product::Product(int number, string name, float price, int quantity) {
 
 }
 
+Product::Product(int number, string name, string category, string desc,
+				float price, int quantity, string prescription)
+{
+	product_number = number;
+	product_name = name;
+	product_category = category;
+	product_description = desc;
+	product_price = price;
+	product_quantity = quantity;
+	product_prescription_required = prescription;
+
+}
+
 Product::~Product() {
 	// TODO Auto-generated destructor stub
 }
 
-void Product::display_product(int length) const{
+void Product::display_product(int nameLength, int categoryLength) const{
 	/*
 	 * TODO - Sprobowac skasowac magic numbers, ustalanie dydanmiczne tresci na podstawie dlugosci
 	 */
 	cout << setw(5) << left << product_number << "|";
-	cout << setw(length) << left << product_name << "|";
+	cout << setw(nameLength) << left << product_name << "|";
+	cout << setw(categoryLength) << left << product_category << "|";
 	cout << fixed << setprecision(2) << setw(10) << left  << product_price << "|";
-	cout << setw(10) << left << product_quantity << endl;
+	cout << setw(10) << left << product_quantity << "|";
+	cout << setw(10) << left << product_prescription_required << endl;
 }
 
-void Product::display_table_names(int length) {
-	/*
-	 * TODO - Musi miec parametry jak w funkcji display_product
-	 *
-	 * TODO - Koniecznie zrobic jakas funkcje ktora wyspiuje odpowiednia ilosc "-"
-	 * 			rown¹ sumie wartosci x z setw(x)
-	 */
-	cout << setw(5) << left << "ID" << "|";
-	cout << setw(length) << left << "Nazwa" << "|";
-	cout << setw(10) << left << "Cena" << "|";
-	cout << setw(10) << left << "Ilosc" << endl;
-	cout << setw(50) << left << "----------------------------------------"<<endl;
+void Product::display_table_names(int nameLength, int categoryLength) {
+
+	int idLength = 5;
+	int priceLength = 10;
+	int quantityLength = 10;
+	int prescriptionLength = 10;
+	int separatorQuantity = 5;
+
+	cout << setw(idLength) << left << "ID" << "|";
+	cout << setw(nameLength) << left << "Nazwa" << "|";
+	cout << setw(categoryLength) << left << "Kategoria" << "|";
+	cout << setw(priceLength) << left << "Cena" << "|";
+	cout << setw(quantityLength) << left << "Ilosc" << "|";
+	cout << setw(prescriptionLength) << left << "W.Recepty" << endl;
+	int sumLenght = idLength + nameLength + categoryLength + priceLength + quantityLength + prescriptionLength + separatorQuantity;
+
+	for(int i = 0; i < sumLenght; i++){
+		cout << "-";
+	}
+	cout << endl;
 }
 
+void Product::display_full_information(){
+	cout << "*******************************" << endl;
+	cout << setw(30) << left << "Szczegoly produktu: " << product_name << endl;
+	cout << setw(30) << left << "Nazwa produktu: " << product_name << endl;
+	cout << setw(30) << left << "Kategoria produktowa: " << product_category << endl;
+	cout << setw(30) << left << "Szczegolowy opis produktu: " << endl;
+	cout << product_description << endl;
+	cout << endl;
+	cout << setw(30) << left << "Cena produktu:" <<  product_price << endl;
+	cout << setw(30) << left << "Dostepna ilosc: " << product_quantity <<endl;
+	cout << "*******************************" << endl;
+}

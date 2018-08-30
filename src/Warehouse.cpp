@@ -35,9 +35,19 @@ int  Warehouse::checkNameColumnLength(){
 	return nameColumnLength+1;
 }
 
+int Warehouse::checkCategoryColumnLength(){
+	int categoryColumnLenght = 2;
+		for(Product p : this->availableProducts){
+			if (p.getProductCategory().length() > categoryColumnLenght){
+				categoryColumnLenght = p.getProductCategory().length();
+			}
+		}
+	return categoryColumnLenght+1;
+}
+
 void Warehouse::showProductColumns(){
 	Product *temp = new Product(1, "temp", 1,1);
-	temp->display_table_names(this->checkNameColumnLength());
+	temp->display_table_names(this->checkNameColumnLength(), this->checkCategoryColumnLength());
 	delete temp;
 }
 
@@ -45,7 +55,7 @@ void Warehouse::showAllProducts(){
 	this->showProductColumns();
 
 	for(Product p : this->availableProducts){
-		p.display_product(this->checkNameColumnLength());
+		p.display_product(this->checkNameColumnLength(), this->checkCategoryColumnLength());
 	}
 }
 
@@ -54,7 +64,7 @@ void Warehouse::showProductsLowQuantity(int quantity){
 	this->showProductColumns();
 	for(Product p : this->availableProducts){
 		if(p.getProductQuantity() <= quantity){
-			p.display_product(this->checkNameColumnLength());
+			p.display_product(this->checkNameColumnLength(), this->checkCategoryColumnLength());
 		}
 	}
 }
@@ -69,7 +79,7 @@ void Warehouse::fillWarehouseWithProducts(){
 	 */
 	fstream inputfile;
 	string line;
-	inputfile.open("../src/test.csv", ios::in);
+	inputfile.open("../src/test2.csv", ios::in);
 
 	while(getline(inputfile,line)){
 		istringstream iss(line);
@@ -82,14 +92,31 @@ void Warehouse::fillWarehouseWithProducts(){
 			strcpy(name, token.c_str());
 
 			getline(iss, token, ';');
+			char *category = new char[token.length() + 1];
+			strcpy(category, token.c_str());
+
+			getline(iss, token, ';');
+			char *desc = new char[token.length() + 1];
+			strcpy(desc, token.c_str());
+
+			getline(iss, token, ';');
 			float price = atof(token.c_str());
 
 			getline(iss, token, ';');
 			int quantity = atoi(token.c_str());
-			Product *temp = new Product(id, name, price,quantity);
+
+			getline(iss, token, ';');
+			char *prescription = new char[token.length() + 1];
+			strcpy(prescription, token.c_str());
+
+			Product *temp = new Product(id, name, category, desc, price, quantity, prescription);
 
 			this->availableProducts.push_back(*temp);
 			delete temp;
+			delete name;
+			delete category;
+			delete desc;
+			delete prescription;
 		}
 
 
@@ -97,13 +124,48 @@ void Warehouse::fillWarehouseWithProducts(){
 }
 
 
-void Warehouse::eraseElementByPosition(int position){
+void Warehouse::eraseElementById(int id){
 	int i = 0;
 	for(Product p : this->availableProducts){
-		if(p.getProductNumber() == position){
+		if(p.getProductNumber() == id){
 			availableProducts.erase(availableProducts.begin()+i);
 		}else{
 			i++;
 		}
+	}
+}
+
+
+void Warehouse::eraseElementByName(string name){
+	int i = 0;
+	for(Product p : this->availableProducts){
+			if(p.getProductName() == name){
+				availableProducts.erase(availableProducts.begin()+i);
+				this->eraseElementByName(name);
+				break;
+			}else{
+				i++;
+			}
+	}
+}
+
+void Warehouse::eraseElementByCategory(string category){
+	int i = 0;
+	for(Product p : this->availableProducts){
+			if(p.getProductCategory() == category){
+				availableProducts.erase(availableProducts.begin()+i);
+				this->eraseElementByCategory(category);
+				break;
+			}else{
+				i++;
+			}
+	}
+}
+
+void Warehouse::showProductDetailsThroughIndex(int index){
+	for(Product p : this->availableProducts){
+		if(p.getProductNumber() == index){
+			p.display_full_information();
+			}
 	}
 }

@@ -17,8 +17,9 @@ class Product {
 public:
 	int product_number;
 	string product_name;
-	//string product_description;
-	//string prescription_required;
+	string product_category;
+	string product_description;
+	string product_prescription_required;
 	float product_price;
 	int product_quantity;
 	//float product_taxation;
@@ -27,8 +28,10 @@ public:
 public:
 	Product();
 	Product(int, string, float, int);
-	void display_product(int) const;
-	void display_table_names(int);
+	Product(int, string, string, string, float, int, string);
+	void display_product(int, int) const;
+	void display_table_names(int, int);
+	void display_full_information();
 	virtual ~Product();
 
 	const string& getProductName() const {
@@ -41,6 +44,10 @@ public:
 
 	int getProductQuantity() const {
 		return product_quantity;
+	}
+
+	const string& getProductCategory() const {
+		return product_category;
 	}
 };
 
