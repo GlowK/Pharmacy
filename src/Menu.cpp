@@ -27,11 +27,11 @@ void Menu::showUserMenu(Warehouse *apteka){
 			system("cls");
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
-			cout << "2) Dodaj produkt"<< endl;
-			cout << "3) Wylistuj produkty "<< endl;
+			cout << "2) Przyjmij produkt na magazyn"<< endl;
+			cout << "3) Pokaz stan mgazynowy "<< endl;
 			cout << "4) Usun produkt"<< endl;
-			cout << "5) Zmien dane produktu"<< endl;
-			cout << "6) Wyswietl dane leku"<< endl;
+			cout << "5) Edycja danych produktow "<< endl;
+			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
 			cout << "7) Zamow towar" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
 			cout << "9) EXIT" << endl;
