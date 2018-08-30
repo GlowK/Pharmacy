@@ -27,11 +27,11 @@ void Menu::showUserMenu(Warehouse *apteka){
 			system("cls");
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
-			cout << "2) Dodaj produkt"<< endl;
-			cout << "3) Wylistuj produkty "<< endl;
+			cout << "2) Przyjmij produkt na magazyn"<< endl;
+			cout << "3) Pokaz stan mgazynowy "<< endl;
 			cout << "4) Usun produkt"<< endl;
-			cout << "5) Zmien dane produktu"<< endl;
-			cout << "6) Wyswietl dane leku"<< endl;
+			cout << "5) Edycja danych produktow "<< endl;
+			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
 			cout << "7) Zamow towar" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
 			cout << "9) EXIT" << endl;
@@ -60,7 +60,7 @@ void Menu::showUserMenu(Warehouse *apteka){
 					char isDetails = 'a';
 					cout << "Czy chcesz wyswietlic szczegoly jakiegos produktu? T/N :";
 					cin >> isDetails;
-					if (isDetails == 'T'){
+					if (isDetails == 'T' or isDetails == 't'){
 						menuOptions.showProductDetailsOption(apteka, 0);
 					}
 					break;
@@ -131,28 +131,15 @@ void Menu::showAdminMenu(){
 
 			switch (choice)
 			{
-				case '1':
-					//Dodaj nowy produkt do magazynu
+				case '1': //Dodaj uzytkownika
 					break;
-				case '2':
-					//Dodaj produkty
+				case '2': //Usun uzytkownika
 					break;
-				case '3':
-					//Wyœwietl wszsytkie produkty
+				case '3': //
 					break;
-				case '4':
-					//Wykasuj product
+				case '4': //
 					break;
-				case '5':
-					//Zmien dane produktu
-					break;
-				case '6':
-					//Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
-					break;
-				case '7' :
-					// UUUU tutaj to jakas wieksza operacja sie szykuje
-					break;
-				case '8':
+				case 'Q':
 					break;
 			}
 		}while(choice != 'Q' or choice != 'q');

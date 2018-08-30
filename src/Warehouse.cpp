@@ -26,7 +26,7 @@ void Warehouse::addProduct(Product p){
 
 
 int  Warehouse::checkNameColumnLength(){
-	int nameColumnLength = 2;
+	int unsigned nameColumnLength = 2;
 		for(Product p : this->availableProducts){
 			if (p.getProductName().length() > nameColumnLength){
 				nameColumnLength = p.getProductName().length();
@@ -36,7 +36,7 @@ int  Warehouse::checkNameColumnLength(){
 }
 
 int Warehouse::checkCategoryColumnLength(){
-	int categoryColumnLenght = 2;
+	int unsigned categoryColumnLenght = 2;
 		for(Product p : this->availableProducts){
 			if (p.getProductCategory().length() > categoryColumnLenght){
 				categoryColumnLenght = p.getProductCategory().length();
@@ -79,7 +79,7 @@ void Warehouse::fillWarehouseWithProducts(){
 	 */
 	fstream inputfile;
 	string line;
-	inputfile.open("../src/test2.csv", ios::in);
+	inputfile.open("../src/test3.csv", ios::in);
 
 	while(getline(inputfile,line)){
 		istringstream iss(line);
