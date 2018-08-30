@@ -69,7 +69,7 @@ void Warehouse::fillWarehouseWithProducts(){
 	 */
 	fstream inputfile;
 	string line;
-	inputfile.open("../src/test.csv", ios::in);
+	inputfile.open("../src/test2.csv", ios::in);
 
 	while(getline(inputfile,line)){
 		istringstream iss(line);
@@ -82,14 +82,31 @@ void Warehouse::fillWarehouseWithProducts(){
 			strcpy(name, token.c_str());
 
 			getline(iss, token, ';');
+			char *category = new char[token.length() + 1];
+			strcpy(category, token.c_str());
+
+			getline(iss, token, ';');
+			char *desc = new char[token.length() + 1];
+			strcpy(desc, token.c_str());
+
+			getline(iss, token, ';');
 			float price = atof(token.c_str());
 
 			getline(iss, token, ';');
 			int quantity = atoi(token.c_str());
-			Product *temp = new Product(id, name, price,quantity);
+
+			getline(iss, token, ';');
+			char *prescription = new char[token.length() + 1];
+			strcpy(prescription, token.c_str());
+
+			Product *temp = new Product(id, name, category, desc, price, quantity, prescription);
 
 			this->availableProducts.push_back(*temp);
 			delete temp;
+			delete name;
+			delete category;
+			delete desc;
+			delete prescription;
 		}
 
 
@@ -105,5 +122,19 @@ void Warehouse::eraseElementByPosition(int position){
 		}else{
 			i++;
 		}
+	}
+}
+
+
+void Warehouse::eraseElementByName(string name){
+	int i = 0;
+	for(Product p : this->availableProducts){
+			if(p.getProductName() == name){
+				availableProducts.erase(availableProducts.begin()+i);
+				this->eraseElementByName(name);
+				break;
+			}else{
+				i++;
+			}
 	}
 }

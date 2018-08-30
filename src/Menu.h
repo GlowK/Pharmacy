@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "Warehouse.h"
+#include "MenuOptions.h"
 
 using namespace std;
 

@@ -7,6 +7,7 @@
 
 #include "Menu.h"
 
+
 Menu::Menu() {
 	// TODO Auto-generated constructor stub
 
@@ -18,21 +19,22 @@ Menu::~Menu() {
 
 void Menu::showUserMenu(Warehouse *apteka){
 		int  menuChoice = 0;
+		MenuOptions menuOptions;
 		cout << "Witamy w apteka management soft" <<endl << endl;
 
 		do
 		{
 			system("cls");
 			cout << "Dostepne opcje wyboru" << endl;
-			cout << "1) Stworz produkt" <<endl;
-			cout << "2) Dodaj produkt"<<endl;
-			cout << "3) Wylistuj produkty "<<endl;
-			cout << "4) Usun produkt"<<endl;
-			cout << "5) Zmien dane produktu"<<endl;
-			cout << "6) Wyswietl dane leku"<<endl;
-			cout << "7) Zamow towar" <<endl;
-			cout << "8) Pokaz towary o niskim stanie magazynowym" <<endl;
-			cout << "9) EXIT" <<endl;
+			cout << "1) Stworz produkt" << endl;
+			cout << "2) Dodaj produkt"<< endl;
+			cout << "3) Wylistuj produkty "<< endl;
+			cout << "4) Usun produkt"<< endl;
+			cout << "5) Zmien dane produktu"<< endl;
+			cout << "6) Wyswietl dane leku"<< endl;
+			cout << "7) Zamow towar" << endl;
+			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
+			cout << "9) EXIT" << endl;
 			cout << "Wybierz opcje: ";
 			cin >> menuChoice;
 
@@ -64,16 +66,8 @@ void Menu::showUserMenu(Warehouse *apteka){
 					 * TODO - wyswietleie produktu czy aby na pewno ten chemy skasowac T/N
 					 *
 					 */
-
-					system("cls");
-					cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
-					int index = 0;
-					cin >> index;
-					apteka->eraseElementByPosition(index);
-					cout << "Produkt wykasowany" << endl;
-					system("Pause");
-
-					break;
+					menuOptions.eraseProductOption(apteka);
+				break;
 				}
 				case 5: //Zmien dane produktu
 					/*
