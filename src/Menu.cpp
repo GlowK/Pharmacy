@@ -60,7 +60,7 @@ void Menu::showUserMenu(Warehouse *apteka){
 					char isDetails = 'a';
 					cout << "Czy chcesz wyswietlic szczegoly jakiegos produktu? T/N :";
 					cin >> isDetails;
-					if (isDetails == 'T'){
+					if (isDetails == 'T' or isDetails == 't'){
 						menuOptions.showProductDetailsOption(apteka, 0);
 					}
 					break;
@@ -131,28 +131,15 @@ void Menu::showAdminMenu(){
 
 			switch (choice)
 			{
-				case '1':
-					//Dodaj nowy produkt do magazynu
+				case '1': //Dodaj uzytkownika
 					break;
-				case '2':
-					//Dodaj produkty
+				case '2': //Usun uzytkownika
 					break;
-				case '3':
-					//Wyœwietl wszsytkie produkty
+				case '3': //
 					break;
-				case '4':
-					//Wykasuj product
+				case '4': //
 					break;
-				case '5':
-					//Zmien dane produktu
-					break;
-				case '6':
-					//Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
-					break;
-				case '7' :
-					// UUUU tutaj to jakas wieksza operacja sie szykuje
-					break;
-				case '8':
+				case 'Q':
 					break;
 			}
 		}while(choice != 'Q' or choice != 'q');
