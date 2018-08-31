@@ -28,11 +28,15 @@ public:
 	void populateCategoryList(Warehouse *);
 	void showCategoryList();
 	void populateSearchResults(Warehouse *, int);
-	// zle tego nie powinno tu byc
+	/*
+	 * Cztery kolejne funkcje to powtorzony kod z Warehouse z innym Ÿrod³em danych
+	 * Moze da³oby sie stworzyc jakas klase/intereface do wyœwietlania tych elementow i tam powtorzyc kod
+	 */
 	void showProductColumns();
 	void showAllProducts();
 	int checkNameColumnLength();
 	int checkCategoryColumnLength();
+	int checkCategoryColumnLength(string);
 };
 
 #endif /* SEARCHRESULT_H_ */

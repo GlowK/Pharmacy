@@ -32,7 +32,7 @@ void SearchResult::populateCategoryList(Warehouse * apteka){
 			this->categoryList.push_back(temp);
 		}else{
 			if(any_of(this->categoryList.begin(), this->categoryList.end(), compare(temp))){
-				// Nic nie robi
+				// Nic nie robi (tzn robi, sprawdza czy w vectorze znajduje sie dany element a jak znajdzie to nic nie robi)
 			}else{
 				this->categoryList.push_back(temp);
 			}
@@ -42,8 +42,15 @@ void SearchResult::populateCategoryList(Warehouse * apteka){
 
 void SearchResult::showCategoryList(){
 	int i = 0;
+	cout << setw(5) << left << "ID" << "|";
+	int categoryColumnLength = this->checkCategoryColumnLength("check this");
+	cout << setw(categoryColumnLength) << left << "Kategoria" << endl;
+	for(int i = 0; i<categoryColumnLength+5;i++){
+		cout <<"-";
+	}
+	cout << endl;
 	for(string s : this->categoryList){
-		cout << i << " " << s << endl;
+		cout << setw(5) << left <<i << "|" << s << endl;
 		i++;
 	}
 }
@@ -88,6 +95,16 @@ int SearchResult::checkCategoryColumnLength(){
 		for(Product p : this->searchResults){
 			if (p.getProductCategory().length() > categoryColumnLenght){
 				categoryColumnLenght = p.getProductCategory().length();
+			}
+		}
+	return categoryColumnLenght+1;
+}
+
+int SearchResult::checkCategoryColumnLength(string s){
+	int unsigned categoryColumnLenght = 2;
+		for(string p : this->categoryList){
+			if (p.length() > categoryColumnLenght){
+				categoryColumnLenght = p.length();
 			}
 		}
 	return categoryColumnLenght+1;

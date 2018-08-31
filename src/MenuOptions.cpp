@@ -135,7 +135,8 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 			}
 			case 2 :
 			{
-				cout << "Dostêpne kategorie do przeszukania" << endl;
+				system("cls");
+				cout << "Dostepne kategorie do przeszukania" << endl << endl;
 				SearchResult searchResult;
 				searchResult.populateCategoryList(apteka);
 				searchResult.showCategoryList();
