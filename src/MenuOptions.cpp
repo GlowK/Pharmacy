@@ -121,26 +121,30 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 	cout << "5) Anuluj " << endl;
 	cout << "Wprowadz wybor: ";
 
-	int showDetailsChoice = 0;
-	cin >> showDetailsChoice;
+	int searchOptionChoice = 0;
+	cin >> searchOptionChoice;
 
-		switch(showDetailsChoice)
+		switch(searchOptionChoice)
 		{
 			case 1 :
 			{
-				cout << "Podaj ID do pokazania szczeglow" << endl;
-				int byIndex = 0;
-				cin >> byIndex;
-				apteka->showProductDetailsThroughIndex(byIndex);
+				cout << "Podaj nazwe produktu do wyszukania" << endl;
+
 				system("Pause");
 				break;
 			}
 			case 2 :
 			{
-				cout << "Podaj Nazwe dla pokazania szczegolow" << endl;
-				string byName;
-				cin >> byName;
-				//apteka->eraseElementByName(byName);
+				cout << "Dostêpne kategorie do przeszukania" << endl;
+				SearchResult searchResult;
+				searchResult.populateCategoryList(apteka);
+				searchResult.showCategoryList();
+				cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
+				int categoryNumber;
+				cin >> categoryNumber;
+				searchResult.populateSearchResults(apteka, categoryNumber);
+				searchResult.showAllProducts();
+
 				system("Pause");
 				break;
 			}

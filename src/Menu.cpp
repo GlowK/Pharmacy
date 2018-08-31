@@ -32,7 +32,7 @@ void Menu::showUserMenu(Warehouse *apteka){
 			cout << "4) Usun produkt"<< endl;
 			cout << "5) Edycja danych produktow "<< endl;
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
-			cout << "7) Zamow towar" << endl;
+			cout << "7) Przeszukaj baze produktów" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
 			cout << "9) EXIT" << endl;
 			cout << "Wybierz opcje: ";
@@ -96,10 +96,11 @@ void Menu::showUserMenu(Warehouse *apteka){
 
 					menuOptions.showProductDetailsOption(apteka, 1);
 					break;
-				case 7 :
+				case 7 : // Przeszukiwanie bazy produktów
 					/*
-					 * TODO - ROZWOJ, NOWE FUNKCJE JAK SKONCZYMY TE WYZEJ
+					 * TODO -
 					 */
+					menuOptions.searchOption(apteka, 1);
 					break;
 				case 8:
 					system("cls");

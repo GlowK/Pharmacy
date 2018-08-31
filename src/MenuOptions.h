@@ -9,6 +9,7 @@
 #define MENUOPTIONS_H_
 
 #include "Warehouse.h"
+#include "SearchResult.h"
 
 class MenuOptions {
 public:
