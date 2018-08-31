@@ -16,12 +16,26 @@ Warehouse::~Warehouse() {
 	// TODO Auto-generated destructor stub
 }
 
-void Warehouse::addProduct(Product p){
+void Warehouse::addProduct(){
 	/*
 	 * Funkcja dodaj¹ca nowy produkt na koniec vectora, moze sie
 	 * przydac przy dodawaniu zupelnie nowego produktu
 	 */
-	this->availableProducts.push_back(p);
+	int index, quantity;
+	float price;
+	string name;
+	//cout << "Podaj id (tymczasowe) " << endl ;
+	//cin >> index;
+	index = this->availableProducts.back().product_number + 1;
+	cout << "Podaj nazwe .. " << endl;
+	cin >> name;
+	cout << "Podaj cene ...  " << endl;
+	cin >> price;
+	cout << "Podaj Ilosc sztuk ... " << endl;
+	cin >> quantity ;
+	Product *p_temp = new Product(index, name, price, quantity);
+	this->availableProducts.push_back(*p_temp);
+	delete p_temp; //Dopisany delete - Kamil
 }
 
 
@@ -167,5 +181,31 @@ void Warehouse::showProductDetailsThroughIndex(int index){
 		if(p.getProductNumber() == index){
 			p.display_full_information();
 			}
+	}
+}
+
+void Warehouse::changeProductQuantity(int quantity, int index){
+	this->showProductColumns();
+
+	for(Product p : this->availableProducts){
+		if(p.getProductNumber() == index){
+			cout << "ustawiam nowa wartosc ..." << endl;
+			p.setProductQuantity(quantity);
+			cout << endl;
+			cout << p.getProductQuantity() << endl ;
+		}
+		else
+			cout << "nie ustawiam nowej wartosc " << endl;
+	}
+}
+
+void Warehouse::showProductsByID(int index){
+	this->showProductColumns();
+
+	for(Product p : this->availableProducts){
+		if(p.getProductNumber() == index){
+			p.display_product(this->checkNameColumnLength(), this->checkCategoryColumnLength());;
+				}
+
 	}
 }

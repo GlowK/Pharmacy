@@ -16,6 +16,7 @@ public:
 	virtual ~MenuOptions();
 	void eraseProductOption(Warehouse *);
 	void showProductDetailsOption(Warehouse *, int);
+	void searchOption(Warehouse *, int);
 };
 
 #endif /* MENUOPTIONS_H_ */

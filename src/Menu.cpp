@@ -44,12 +44,26 @@ void Menu::showUserMenu(Warehouse *apteka){
 					/*
 					 * TODO - Dodanie zupelnie nowego produktu
 					 */
+					apteka->addProduct();
 					break;
 				case 2: //Dodaj produkty
 					/*
 					 * TODO - Mozna zmienic na zmien ilosc produktow lub
 					 */
+				{
+					system("cls");
+					cout << "Podaj numer produktu do zmiany " << endl;
+					int index = 0;
+					cin >> index;
+					cout << "Podaj ilosc sztuk produktu do zmiany" << endl;
+					int quantity;
+					cin >> quantity;
+					apteka->changeProductQuantity(quantity, index);
+					//cout << "dodane" << endl;
+					//apteka->showProductsByID(index);
+					system("Pause");
 					break;
+				}
 				case 3: // Wypisywanie wszystkich produktow
 				{
 					system("cls");
