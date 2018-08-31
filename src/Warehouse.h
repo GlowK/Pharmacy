@@ -23,7 +23,7 @@ public:
 public:
 	Warehouse();
 	virtual ~Warehouse();
-	void addProduct(Product);
+	void addProduct();
 	void showAllProducts();
 	void showProductsLowQuantity(int);
 	void fillWarehouseWithProducts();
@@ -34,6 +34,8 @@ public:
 	int checkCategoryColumnLength();
 	void showProductColumns();
 	void showProductDetailsThroughIndex(int);
+	void changeProductQuantity(int, int); //Bartosz
+	void showProductsByID(int); //Bartosz
 };
 
 #endif /* WAREHOUSE_H_ */

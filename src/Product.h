@@ -49,6 +49,12 @@ public:
 	const string& getProductCategory() const {
 		return product_category;
 	}
+
+	void setProductQuantity(int changeQuantity)  {
+		cout << this->product_quantity << endl;
+		this->product_quantity+=changeQuantity;
+		cout << product_quantity << endl;
+	}
 };
 
 #endif /* PRODUCT_H_ */

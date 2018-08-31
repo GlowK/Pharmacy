@@ -107,3 +107,51 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 				break;
 		}
 }
+
+
+void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
+	if(clearScreenFlag == 1){
+			system("cls");
+	}
+	cout << "W jaki sposob wchcesz przeszukac baze" << endl;
+	cout << "1) Po nazwie produktu" << endl;
+	cout << "2) Po kategorii produktu" << endl;
+	cout << "3) Po cenie produktu" << endl;
+	cout << "4) Po wymagalnosci recepty " << endl;
+	cout << "5) Anuluj " << endl;
+	cout << "Wprowadz wybor: ";
+
+	int searchOptionChoice = 0;
+	cin >> searchOptionChoice;
+
+		switch(searchOptionChoice)
+		{
+			case 1 :
+			{
+				cout << "Podaj nazwe produktu do wyszukania" << endl;
+
+				system("Pause");
+				break;
+			}
+			case 2 :
+			{
+				system("cls");
+				cout << "Dostepne kategorie do przeszukania" << endl << endl;
+				SearchResult searchResult;
+				searchResult.populateCategoryList(apteka);
+				searchResult.showCategoryList();
+				cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
+				int categoryNumber;
+				cin >> categoryNumber;
+				searchResult.populateSearchResults(apteka, categoryNumber);
+				searchResult.showAllProducts();
+
+				system("Pause");
+				break;
+			}
+			case 3 :
+				break;
+			default :
+				break;
+		}
+}

@@ -9,6 +9,7 @@
 #define MENUOPTIONS_H_
 
 #include "Warehouse.h"
+#include "SearchResult.h"
 
 class MenuOptions {
 public:
@@ -16,6 +17,7 @@ public:
 	virtual ~MenuOptions();
 	void eraseProductOption(Warehouse *);
 	void showProductDetailsOption(Warehouse *, int);
+	void searchOption(Warehouse *, int);
 };
 
 #endif /* MENUOPTIONS_H_ */
