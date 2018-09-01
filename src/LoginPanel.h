@@ -1,8 +1,8 @@
 /*
- * LoginPanel.h
+ * LoginPanel.cpp
  *
- *  Created on: 1 wrz 2018
- *      Author: XR
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #ifndef LOGINPANEL_H_

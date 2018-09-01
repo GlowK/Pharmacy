@@ -1,8 +1,8 @@
 /*
- * SearchResult.h
+ * LoginPanel.cpp
  *
- *  Created on: 31 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #ifndef SEARCHRESULT_H_
@@ -26,10 +26,13 @@ public:
 	virtual ~SearchResult();
 
 	void populateCategoryList(Warehouse *);
-	void showCategoryList();
+	int showCategoryList();
 	void populateSearchResultsByCategory(Warehouse *, int);
+	string populateSearchResultsByCategoryReturnCategoryName(Warehouse *, int);
 	void populateSearchRusultsByName(Warehouse *, string);
 	void populateSearchResultsByPrice(Warehouse *, float, float);
+	void populateSearchResultsById(Warehouse *, int);
+	void sortSearchResultsByPrice();
 	/*
 	 * Cztery kolejne funkcje to powtorzony kod z Warehouse z innym Ÿrod³em danych
 	 * Moze da³oby sie stworzyc jakas klase/intereface do wyœwietlania tych elementow i tam powtorzyc kod
