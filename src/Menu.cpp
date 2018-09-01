@@ -17,7 +17,7 @@ Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
 
-void Menu::showUserMenu(Warehouse *apteka){
+void Menu::showUserMenu(Warehouse *apteka, User *user){
 		int  menuChoice = 0;
 		MenuOptions menuOptions;
 		cout << "Witamy w apteka management soft" <<endl << endl;
@@ -25,6 +25,12 @@ void Menu::showUserMenu(Warehouse *apteka){
 		do
 		{
 			system("cls");
+			cout << "***************Pomyœlnie zalogowano jako ";
+			if(user->status == 1)
+				cout << "administator ";
+			else
+				cout << "uzytkownik ";
+			cout << user->loginFromFile << "***************" << endl;
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
 			cout << "2) Przyjmij produkt na magazyn"<< endl;
@@ -35,6 +41,11 @@ void Menu::showUserMenu(Warehouse *apteka){
 			cout << "7) Przeszukaj baze produktów" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
 			cout << "9) EXIT" << endl;
+
+			if(user->status == 1)
+			{
+				cout << "10) Dodaj nowego uzytkownika" << endl;
+			}
 			cout << "Wybierz opcje: ";
 			cin >> menuChoice;
 
@@ -114,7 +125,15 @@ void Menu::showUserMenu(Warehouse *apteka){
 				case 9:
 					cout << "Zakonczenie dzialnia programu" << endl;
 					break;
-
+				case 10:
+					if(user->status == 1)
+					{
+						user->AddNewUser();
+					}
+					else
+					{
+						cout << "Niepoprawne dane" << endl;
+					}
 
 				default:
 					cout << "Niepoprawne dane" << endl;
