@@ -22,7 +22,7 @@ bool User::FindUser(string log)
 	string tmp;
 	int a;
 	line = 0;
-	plik_.open("../src/dane.txt", ios::in);
+	plik_.open("src/dane.txt", ios::in);
 
 	while(!plik_.eof())
 	{
@@ -38,8 +38,8 @@ bool User::FindUser(string log)
 
 		if(loginFromFile == log)
 		{
-			return true;
 			plik_.close();
+			return true;
 			break;
 		}
 
@@ -66,7 +66,7 @@ void User::DownloadingDataFromFile()
 	plik_.close();
 	string tmp;
 	int a;
-	plik_.open("../src/dane.txt", ios::in);
+	plik_.open("src/dane.txt", ios::in);
 
 
 	for(int i = 0; i < line; i++)
@@ -123,7 +123,7 @@ void User::DownloadingDataFromFile()
 void User::AddNewUser()
 {
 	string tmp;
-	plik_.open("../src/dane.txt", ios::app);
+	plik_.open("src/dane.txt", ios::app);
 
 	cout << "Dodaj nowego uzytkownika!" << endl;
 		//Login:
