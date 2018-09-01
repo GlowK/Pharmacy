@@ -33,6 +33,9 @@ public:
 
 	//confirmation -
 	bool choiceConfirmation();
+
+	//details
+	void showDetailsById(Warehouse *);
 };
 
 #endif /* MENUOPTIONS_H_ */

@@ -82,19 +82,15 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					apteka->showAllProducts();
 					cout << endl;
 					system("Pause");
-					char isDetails = 'a';
+					cout << endl;
 					cout << "Czy chcesz wyswietlic szczegoly jakiegos produktu? T/N :";
-					cin >> isDetails;
-					if (isDetails == 'T' or isDetails == 't'){
+					if (menuOptions.choiceConfirmation()){
 						menuOptions.showProductDetailsOption(apteka, 0);
 					}
 					break;
 				}
 				case 4: // Kasowanie produktu
 				{
-					/*
-					 * TODO - wyswietleie produktu czy aby na pewno ten chemy skasowac T/N
-					 */
 					menuOptions.eraseProductOption(apteka);
 					break;
 				}
@@ -104,13 +100,9 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					 */
 					break;
 				case 6: //Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
-
 					menuOptions.showProductDetailsOption(apteka, 1);
 					break;
 				case 7 : // Przeszukiwanie bazy produktów
-					/*
-					 * TODO -
-					 */
 					menuOptions.searchOption(apteka, 1);
 					break;
 				case 8:
