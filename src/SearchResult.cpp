@@ -1,8 +1,8 @@
 /*
- * SearchResult.cpp
+ * LoginPanel.cpp
  *
- *  Created on: 31 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #include "SearchResult.h"
@@ -41,7 +41,7 @@ void SearchResult::populateCategoryList(Warehouse * apteka){
 	sort(this->categoryList.begin(), this->categoryList.end());
 }
 
-void SearchResult::showCategoryList(){
+int SearchResult::showCategoryList(){
 	int i = 0;
 	cout << setw(5) << left << "ID" << "|";
 	int categoryColumnLength = this->checkCategoryColumnLength("check this");
@@ -54,6 +54,7 @@ void SearchResult::showCategoryList(){
 		cout << setw(5) << left <<i << "|" << s << endl;
 		i++;
 	}
+	return i;
 }
 
 
@@ -66,6 +67,17 @@ void SearchResult::populateSearchResultsByCategory(Warehouse * apteka, int categ
 		}
 	}
 	sortSearchResultsByPrice();
+}
+
+string SearchResult::populateSearchResultsByCategoryReturnCategoryName(Warehouse * apteka, int categoryNumber){
+	string catName = this->categoryList.at(categoryNumber);
+		for(Product p : apteka->availableProducts){
+			if(p.getProductCategory() == catName){
+				this->searchResults.push_back(p);
+			}
+		}
+		sortSearchResultsByPrice();
+		return catName;
 }
 
 void SearchResult::populateSearchRusultsByName(Warehouse * apteka, string searchedName){
@@ -142,4 +154,13 @@ void SearchResult::sortSearchResultsByPrice(){
 					[](const Product& p1, const Product &p2){
 			return p1.product_price < p2.product_price;
 		});
+}
+
+void SearchResult::populateSearchResultsById(Warehouse *apteka, int index){
+	for(Product p : apteka->availableProducts){
+		if(p.getProductNumber() == index){
+				this->searchResults.push_back(p);
+			}
+	}
+	this->showAllProducts();
 }

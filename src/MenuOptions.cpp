@@ -1,8 +1,8 @@
 /*
- * MenuOptions.cpp
+ * LoginPanel.cpp
  *
- *  Created on: 30 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #include "MenuOptions.h"
@@ -34,8 +34,16 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 				cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
 				int index = 0;
 				cin >> index;
-				apteka->eraseElementById(index);
-				cout << "Produkt wykasowany" << endl;
+				SearchResult searchResult;
+				searchResult.populateSearchResultsById(apteka, index);
+				cout << endl;
+				cout << "Czy na pewno chcesz skasowac ten produkt? T/N ";
+				char confirmation;
+				cin >> confirmation;
+				if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
+					apteka->eraseElementById(index);
+					cout << "Produkt wykasowany" << endl;
+				}
 				system("Pause");
 				break;
 			}
@@ -51,11 +59,21 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 			}
 			case 3 :
 			{
-				cout << "Jaki produkty wg Kategorii chcesz skasowac" << endl;
-				string eraseCategory;
+				SearchResult searchResult;
+				searchResult.populateCategoryList(apteka);
+				searchResult.showCategoryList();
+				cout << "Podaj numer kategorii, ktora chcesz skasowac" << endl;
+				int eraseCategory;
 				cin >> eraseCategory;
-				apteka->eraseElementByCategory(eraseCategory);
-				cout << "Produkt wykasowany" << endl;
+				string eraseCat = searchResult.populateSearchResultsByCategoryReturnCategoryName(apteka, eraseCategory);
+				searchResult.showAllProducts();
+				cout << "Czy na pewno chcesz skasowac te produkty? T/N ";
+				char confirmation;
+				cin >> confirmation;
+				if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
+					apteka->eraseElementByCategory(eraseCat);
+					cout << "Produkty wykasowane" << endl;
+				}
 				system("Pause");
 				break;
 			}
@@ -102,6 +120,8 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 				break;
 			}
 			case 3 :
+				cout << endl << "Anulowanie..." << endl;
+				system("Pause");
 				break;
 			default :
 				break;
@@ -128,49 +148,19 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 			case 1 :
 			{
 				system("cls");
-				cout << "********** Wyszukiwanie po nazwie produktu **********" << endl;
-				cout << "Podaj nazwe produktu do wyszukania" << endl;
-				string searchedName;
-				cin >> searchedName;
-				SearchResult searchResult;
-				searchResult.populateSearchRusultsByName(apteka, searchedName);
-				cout << endl;
-				system("Pause");
+				nameSearch(apteka);
 				break;
 			}
 			case 2 :
 			{
 				system("cls");
-				cout << "********** Wyszukiwanie po kategorii produktu **********" << endl;
-				cout << "Dostepne kategorie do przeszukania: " << endl << endl;
-				SearchResult searchResult;
-				searchResult.populateCategoryList(apteka);
-				searchResult.showCategoryList();
-				cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
-				int categoryNumber;
-				cin >> categoryNumber;
-				cout << endl;
-				searchResult.populateSearchResultsByCategory(apteka, categoryNumber);
-				searchResult.showAllProducts();
-				cout << endl;
-				system("Pause");
+				categorySearch(apteka);
 				break;
 			}
 			case 3 :
 			{
 				system("cls");
-				cout << "********** Wyszukiwanie po cenie (min/max) **********" << endl;
-				cout << "Podaj minimalna wartosc minimalna: ";
-				float minValue;
-				cin >> minValue;
-				cout << "Podaj wartosc maksymalna: ";
-				float maxValue;
-				cin >> maxValue;
-				cout << endl;
-				SearchResult searchResult;
-				searchResult.populateSearchResultsByPrice(apteka, minValue, maxValue);
-				cout << endl;
-				system("Pause");
+				priceSearch(apteka);
 				break;
 			}
 			case 4 :
@@ -180,4 +170,52 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 			default :
 				break;
 		}
+}
+
+void MenuOptions::categorySearch(Warehouse * apteka){
+	cout << "********** Wyszukiwanie po kategorii produktu **********" << endl;
+	cout << "Dostepne kategorie do przeszukania: " << endl << endl;
+	SearchResult searchResult;
+	searchResult.populateCategoryList(apteka);
+	int rangeControl = searchResult.showCategoryList();
+	cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
+	int categoryNumber;
+	cin >> categoryNumber;
+	if(categoryNumber < 0 || categoryNumber > rangeControl){
+		cout << "Nie ma takiej kategorii. Przerywam..." << endl;
+		system("Pause");
+	}else{
+		cout << endl;
+		searchResult.populateSearchResultsByCategory(apteka, categoryNumber);
+		searchResult.showAllProducts();
+		cout << endl;
+		system("Pause");
+	}
+}
+
+
+void MenuOptions::nameSearch(Warehouse * apteka){
+	cout << "********** Wyszukiwanie po nazwie produktu **********" << endl;
+	cout << "Podaj nazwe produktu do wyszukania" << endl;
+	string searchedName;
+	cin >> searchedName;
+	SearchResult searchResult;
+	searchResult.populateSearchRusultsByName(apteka, searchedName);
+	cout << endl;
+	system("Pause");
+}
+
+void MenuOptions::priceSearch(Warehouse * apteka){
+	cout << "********** Wyszukiwanie po cenie (min/max) **********" << endl;
+	cout << "Podaj minimalna wartosc minimalna: ";
+	float minValue;
+	cin >> minValue;
+	cout << "Podaj wartosc maksymalna: ";
+	float maxValue;
+	cin >> maxValue;
+	cout << endl;
+	SearchResult searchResult;
+	searchResult.populateSearchResultsByPrice(apteka, minValue, maxValue);
+	cout << endl;
+	system("Pause");
 }

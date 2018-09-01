@@ -1,9 +1,9 @@
 //============================================================================
 // Name        : Pharmacy.cpp
-// Author      : Kamil Glowinski
+// Author      : Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
 // Version     :
-// Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Copyright   :
+// Description : WIEiK PP Project
 //============================================================================
 
 

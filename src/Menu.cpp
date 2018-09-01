@@ -1,8 +1,8 @@
 /*
- * Menu.cpp
+ * LoginPanel.cpp
  *
- *  Created on: 29 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #include "Menu.h"
@@ -34,7 +34,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
 			cout << "2) Przyjmij produkt na magazyn"<< endl;
-			cout << "3) Pokaz stan mgazynowy "<< endl;
+			cout << "3) Pokaz stan magazynowy "<< endl;
 			cout << "4) Usun produkt"<< endl;
 			cout << "5) Edycja danych produktow "<< endl;
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
