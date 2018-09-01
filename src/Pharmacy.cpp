@@ -21,9 +21,9 @@
 
 using namespace std;
 
-
 int main()
 {
+
 	LoginPanel loginPanel;
 	User u1;
 
