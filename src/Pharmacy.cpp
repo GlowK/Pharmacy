@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <cstdio>
 #include <fstream>
+
 #include "Product.h"
 #include "Warehouse.h"
 #include "Menu.h"
