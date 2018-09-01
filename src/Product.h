@@ -55,6 +55,10 @@ public:
 		this->product_quantity+=changeQuantity;
 		cout << product_quantity << endl;
 	}
+
+	float getProductPrice() const {
+		return product_price;
+	}
 };
 
 #endif /* PRODUCT_H_ */

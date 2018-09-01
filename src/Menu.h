@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include "Warehouse.h"
+#include "User.h"
 #include "MenuOptions.h"
 
 using namespace std;
@@ -21,7 +22,7 @@ class Menu {
 public:
 	Menu();
 	virtual ~Menu();
-	void showUserMenu(Warehouse * );
+	void showUserMenu(Warehouse *, User *);
 	void showAdminMenu();
 };
 

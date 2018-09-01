@@ -11,20 +11,29 @@
 #include <process.h>
 #include <stdlib.h>
 #include <cstdio>
+#include <fstream>
 #include "Product.h"
 #include "Warehouse.h"
 #include "Menu.h"
+#include "User.h"
+#include "LoginPanel.h"
 
 using namespace std;
 
+
 int main()
 {
-	Warehouse apteka;
-	apteka.fillWarehouseWithProducts();
+	LoginPanel loginPanel;
+	User u1;
 
-	Menu menu;
-	menu.showUserMenu(&apteka);
-	//menu.showAdminMenu();
+	if(loginPanel.ShowLoggingPanel(u1).logged == true)
+	{
+		Warehouse apteka;
+		apteka.fillWarehouseWithProducts();
 
+		Menu menu;
+		menu.showUserMenu(&apteka, &u1);
+		//menu.showAdminMenu();
+	}
 	return 0;
 }

@@ -113,12 +113,11 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 	if(clearScreenFlag == 1){
 			system("cls");
 	}
-	cout << "W jaki sposob wchcesz przeszukac baze" << endl;
+	cout << "W jaki sposob chcesz przeszukac baze: " << endl;
 	cout << "1) Po nazwie produktu" << endl;
 	cout << "2) Po kategorii produktu" << endl;
-	cout << "3) Po cenie produktu" << endl;
-	cout << "4) Po wymagalnosci recepty " << endl;
-	cout << "5) Anuluj " << endl;
+	cout << "3) Po cenie produktu (min/max)" << endl;
+	cout << "4) Anuluj " << endl;
 	cout << "Wprowadz wybor: ";
 
 	int searchOptionChoice = 0;
@@ -128,28 +127,55 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 		{
 			case 1 :
 			{
+				system("cls");
+				cout << "********** Wyszukiwanie po nazwie produktu **********" << endl;
 				cout << "Podaj nazwe produktu do wyszukania" << endl;
-
+				string searchedName;
+				cin >> searchedName;
+				SearchResult searchResult;
+				searchResult.populateSearchRusultsByName(apteka, searchedName);
+				cout << endl;
 				system("Pause");
 				break;
 			}
 			case 2 :
 			{
 				system("cls");
-				cout << "Dostepne kategorie do przeszukania" << endl << endl;
+				cout << "********** Wyszukiwanie po kategorii produktu **********" << endl;
+				cout << "Dostepne kategorie do przeszukania: " << endl << endl;
 				SearchResult searchResult;
 				searchResult.populateCategoryList(apteka);
 				searchResult.showCategoryList();
 				cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
 				int categoryNumber;
 				cin >> categoryNumber;
-				searchResult.populateSearchResults(apteka, categoryNumber);
+				cout << endl;
+				searchResult.populateSearchResultsByCategory(apteka, categoryNumber);
 				searchResult.showAllProducts();
-
+				cout << endl;
 				system("Pause");
 				break;
 			}
 			case 3 :
+			{
+				system("cls");
+				cout << "********** Wyszukiwanie po cenie (min/max) **********" << endl;
+				cout << "Podaj minimalna wartosc minimalna: ";
+				float minValue;
+				cin >> minValue;
+				cout << "Podaj wartosc maksymalna: ";
+				float maxValue;
+				cin >> maxValue;
+				cout << endl;
+				SearchResult searchResult;
+				searchResult.populateSearchResultsByPrice(apteka, minValue, maxValue);
+				cout << endl;
+				system("Pause");
+				break;
+			}
+			case 4 :
+				cout << endl << "Anulowanie..." << endl;
+				system("Pause");
 				break;
 			default :
 				break;

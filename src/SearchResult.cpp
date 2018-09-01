@@ -56,7 +56,7 @@ void SearchResult::showCategoryList(){
 }
 
 
-void SearchResult::populateSearchResults(Warehouse * apteka, int categoryNumber){
+void SearchResult::populateSearchResultsByCategory(Warehouse * apteka, int categoryNumber){
 
 	string catName = this->categoryList.at(categoryNumber);
 	for(Product p : apteka->availableProducts){
@@ -64,6 +64,34 @@ void SearchResult::populateSearchResults(Warehouse * apteka, int categoryNumber)
 			this->searchResults.push_back(p);
 		}
 	}
+}
+
+void SearchResult::populateSearchRusultsByName(Warehouse * apteka, string searchedName){
+	for(Product p : apteka->availableProducts){
+		if(p.getProductName().find(searchedName) != string::npos){
+			this->searchResults.push_back(p);
+		}
+	}
+	this->showAllProducts();
+}
+
+
+void SearchResult::populateSearchResultsByPrice(Warehouse * apteka, float min, float max){
+	for(Product p : apteka->availableProducts){
+		if(p.getProductPrice() <= max && p.getProductPrice() >= min){
+			this->searchResults.push_back(p);
+		}
+	}
+	cout << "Posortowac wyniki malejaco? T/N ";
+	char confirmation;
+	cin >> confirmation;
+	if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
+		sort(this->searchResults.begin(), this->searchResults.end(),
+				[](const Product& p1, const Product &p2){
+			return p1.product_price < p2.product_price;
+		});
+	}
+	this->showAllProducts();
 }
 
 void SearchResult::showProductColumns(){
@@ -109,4 +137,5 @@ int SearchResult::checkCategoryColumnLength(string s){
 		}
 	return categoryColumnLenght+1;
 }
+
 
