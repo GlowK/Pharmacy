@@ -38,6 +38,7 @@ void SearchResult::populateCategoryList(Warehouse * apteka){
 			}
 		}
 	}
+	sort(this->categoryList.begin(), this->categoryList.end());
 }
 
 void SearchResult::showCategoryList(){
@@ -64,6 +65,7 @@ void SearchResult::populateSearchResultsByCategory(Warehouse * apteka, int categ
 			this->searchResults.push_back(p);
 		}
 	}
+	sortSearchResultsByPrice();
 }
 
 void SearchResult::populateSearchRusultsByName(Warehouse * apteka, string searchedName){
@@ -86,10 +88,7 @@ void SearchResult::populateSearchResultsByPrice(Warehouse * apteka, float min, f
 	char confirmation;
 	cin >> confirmation;
 	if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
-		sort(this->searchResults.begin(), this->searchResults.end(),
-				[](const Product& p1, const Product &p2){
-			return p1.product_price < p2.product_price;
-		});
+		sortSearchResultsByPrice();
 	}
 	this->showAllProducts();
 }
@@ -138,4 +137,9 @@ int SearchResult::checkCategoryColumnLength(string s){
 	return categoryColumnLenght+1;
 }
 
-
+void SearchResult::sortSearchResultsByPrice(){
+	sort(this->searchResults.begin(), this->searchResults.end(),
+					[](const Product& p1, const Product &p2){
+			return p1.product_price < p2.product_price;
+		});
+}

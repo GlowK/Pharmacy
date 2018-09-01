@@ -30,6 +30,7 @@ public:
 	void populateSearchResultsByCategory(Warehouse *, int);
 	void populateSearchRusultsByName(Warehouse *, string);
 	void populateSearchResultsByPrice(Warehouse *, float, float);
+	void sortSearchResultsByPrice();
 	/*
 	 * Cztery kolejne funkcje to powtorzony kod z Warehouse z innym Ÿrod³em danych
 	 * Moze da³oby sie stworzyc jakas klase/intereface do wyœwietlania tych elementow i tam powtorzyc kod
