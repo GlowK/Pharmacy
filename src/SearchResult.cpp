@@ -86,7 +86,7 @@ void SearchResult::populateSearchRusultsByName(Warehouse * apteka, string search
 			this->searchResults.push_back(p);
 		}
 	}
-	this->showAllProducts();
+	//this->showAllProducts();
 }
 
 

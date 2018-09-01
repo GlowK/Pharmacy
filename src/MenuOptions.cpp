@@ -16,6 +16,17 @@ MenuOptions::~MenuOptions() {
 	// TODO Auto-generated destructor stub
 }
 
+
+bool MenuOptions::choiceConfirmation(){
+	char confirmation;
+	cin >> confirmation;
+	if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 void MenuOptions::eraseProductOption(Warehouse * apteka){
 	system("cls");
 	cout << "W jaki sposob chcesz usunac produkty?" << endl;
@@ -31,49 +42,19 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 		{
 			case 1 :
 			{
-				cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
-				int index = 0;
-				cin >> index;
-				SearchResult searchResult;
-				searchResult.populateSearchResultsById(apteka, index);
-				cout << endl;
-				cout << "Czy na pewno chcesz skasowac ten produkt? T/N ";
-				char confirmation;
-				cin >> confirmation;
-				if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
-					apteka->eraseElementById(index);
-					cout << "Produkt wykasowany" << endl;
-				}
+				eraseByID(apteka);
 				system("Pause");
 				break;
 			}
 			case 2 :
 			{
-				cout << "Jaki produkty wg Nazwy chcesz skasowac" << endl;
-				string eraseName;
-				cin >> eraseName;
-				apteka->eraseElementByName(eraseName);
-				cout << "Produkt wykasowany" << endl;
+				eraseByName(apteka);
 				system("Pause");
 				break;
 			}
 			case 3 :
 			{
-				SearchResult searchResult;
-				searchResult.populateCategoryList(apteka);
-				searchResult.showCategoryList();
-				cout << "Podaj numer kategorii, ktora chcesz skasowac" << endl;
-				int eraseCategory;
-				cin >> eraseCategory;
-				string eraseCat = searchResult.populateSearchResultsByCategoryReturnCategoryName(apteka, eraseCategory);
-				searchResult.showAllProducts();
-				cout << "Czy na pewno chcesz skasowac te produkty? T/N ";
-				char confirmation;
-				cin >> confirmation;
-				if(confirmation == 'T' || confirmation == 't' || confirmation == 'y' || confirmation == 'Y'){
-					apteka->eraseElementByCategory(eraseCat);
-					cout << "Produkty wykasowane" << endl;
-				}
+				eraseByCategory(apteka);
 				system("Pause");
 				break;
 			}
@@ -82,6 +63,73 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 			default :
 				break;
 		}
+}
+
+void MenuOptions::eraseByID(Warehouse * apteka){
+	cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
+	int index = 0;
+	cin >> index;
+	SearchResult searchResult;
+	searchResult.populateSearchResultsById(apteka, index);
+	cout << endl;
+	cout << "Czy na pewno chcesz skasowac ten produkt? T/N ";
+	if(choiceConfirmation()){
+		apteka->eraseElementById(index);
+		cout << "Produkt wykasowany" << endl;
+	}
+}
+
+void MenuOptions::eraseByName(Warehouse * apteka){
+	cout << "Jaki produkty wg Nazwy chcesz skasowac" << endl;
+	string eraseName;
+	cin >> eraseName;
+	SearchResult searchResult;
+	searchResult.populateSearchRusultsByName(apteka, eraseName);
+	if(searchResult.searchResults.size() == 0){
+		cout << "Brak rezultatow dla takiego rekordu" << endl;
+		searchResult.showAllProducts();
+		cout << "Czy chcesz ponowic zapytanie? T/N" << endl;
+		if(choiceConfirmation()){
+			eraseByName(apteka);
+			return;
+		}else{
+			return;
+		}
+	}else if(searchResult.searchResults.size() > 1){
+		cout << "Wiecej niz 1 rezultat dla zapytania" << endl;
+		searchResult.showAllProducts();
+		cout << "Czy chcesz ponowic zapytanie? T/N" << endl;
+		if(choiceConfirmation()){
+			eraseByName(apteka);
+			return;
+		}else{
+			return;
+		}
+	}else if(searchResult.searchResults.size() == 1){
+		searchResult.showAllProducts();
+		cout << endl << "Czy na pewno chcesz skasowac ten produkt? T/N ";
+		if(choiceConfirmation()){
+			apteka->eraseElementByName(eraseName);
+			cout << "Produkt wykasowany" << endl;
+			system("Pause");
+		}
+	}
+}
+
+void MenuOptions::eraseByCategory(Warehouse * apteka){
+	SearchResult searchResult;
+	searchResult.populateCategoryList(apteka);
+	searchResult.showCategoryList();
+	cout << "Podaj numer kategorii, ktora chcesz skasowac" << endl;
+	int eraseCategory;
+	cin >> eraseCategory;
+	string eraseCat = searchResult.populateSearchResultsByCategoryReturnCategoryName(apteka, eraseCategory);
+	searchResult.showAllProducts();
+	cout << "Czy na pewno chcesz skasowac te produkty? T/N ";
+	if(choiceConfirmation()){
+		apteka->eraseElementByCategory(eraseCat);
+		cout << "Produkty wykasowane" << endl;
+	}
 }
 
 
@@ -201,6 +249,7 @@ void MenuOptions::nameSearch(Warehouse * apteka){
 	cin >> searchedName;
 	SearchResult searchResult;
 	searchResult.populateSearchRusultsByName(apteka, searchedName);
+	searchResult.showAllProducts();
 	cout << endl;
 	system("Pause");
 }

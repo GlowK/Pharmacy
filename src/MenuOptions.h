@@ -23,6 +23,14 @@ public:
 	void categorySearch(Warehouse *);
 	void nameSearch(Warehouse *);
 	void priceSearch(Warehouse *);
+
+	//eraseFunction
+	void eraseByName(Warehouse *);
+	void eraseByID(Warehouse *);
+	void eraseByCategory(Warehouse*);
+
+	//confirmation
+	bool choiceConfirmation();
 };
 
 #endif /* MENUOPTIONS_H_ */
