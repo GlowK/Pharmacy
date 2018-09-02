@@ -38,6 +38,14 @@ public:
 		return product_name;
 	}
 
+	void setProductName(const string& productName) {
+		product_name = productName;
+	}
+
+	void setProductNumber(int productNumber) {
+		product_number = productNumber;
+	}
+
 	int getProductNumber() const {
 		return product_number;
 	}
@@ -46,18 +54,26 @@ public:
 		return product_quantity;
 	}
 
+	void setProductQuantity(int changeQuantity)  {
+		//cout << this->product_quantity << endl;
+		this->product_quantity+=changeQuantity;
+		//cout << product_quantity << endl;
+	}
+
 	const string& getProductCategory() const {
 		return product_category;
 	}
 
-	void setProductQuantity(int changeQuantity)  {
-		cout << this->product_quantity << endl;
-		this->product_quantity+=changeQuantity;
-		cout << product_quantity << endl;
+	void setProductCategory(const string& productCat) {
+		product_category = productCat;
 	}
 
 	float getProductPrice() const {
 		return product_price;
+	}
+
+	void setProductPrice(float productPrice) {
+		product_price = productPrice;
 	}
 };
 
