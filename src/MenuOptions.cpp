@@ -296,7 +296,7 @@ void MenuOptions::editSubmenuOptions(Warehouse *apteka){
     	cout << "1) Nazwe produktu \n";
     	cout << "2) Kategorie produktu \n";
     	cout << "3) Cene produktu  \n" ;
-    	cout << "3) Ilosc sztuk produktu  \n" ;
+    	cout << "3) Ilosc sztuk produktu  \n" ; // <- 4
     	cout << "Q lub q. Wyjscie \n ";
     cout << "\n" ;
     cin >> editOptionChoice ;

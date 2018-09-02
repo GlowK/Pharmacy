@@ -8,11 +8,23 @@
 #include "ReceiptPosition.h"
 
 ReceiptPosition::ReceiptPosition() {
-	// TODO Auto-generated constructor stub
 
 }
+
+ReceiptPosition::ReceiptPosition(string positionName, int quantity, float price){
+	this->positionName = positionName;
+	this->quantity = quantity;
+	this->price = price;
+	this->sum = calculateSum();
+}
+
 
 ReceiptPosition::~ReceiptPosition() {
 	// TODO Auto-generated destructor stub
 }
 
+float ReceiptPosition::calculateSum(){
+	float result = 0;
+	result = this->quantity * this->price;
+	return result;
+}
