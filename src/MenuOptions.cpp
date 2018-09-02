@@ -2,7 +2,7 @@
  * LoginPanel.cpp
  *
  *  Created on: 6 wrz 2018
- *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
+ *      Author: Kamil GÂ³owiÃ±ski, Bartosz SoÂ³oducha, Tomasz Siwiec, Piotr KÃªpa
  */
 
 #include "MenuOptions.h"
@@ -292,37 +292,41 @@ void MenuOptions::editSubmenuOptions(Warehouse *apteka){
 	char editOptionChoice;
 
     do {
+    	system("cls");
     	cout << "Wybierz co chcesz edytowac : \n" ;
     	cout << "1) Nazwe produktu \n";
     	cout << "2) Kategorie produktu \n";
     	cout << "3) Cene produktu  \n" ;
-    	cout << "3) Ilosc sztuk produktu  \n" ; // <- 4
-    	cout << "Q lub q. Wyjscie \n ";
+    	cout << "4) Ilosc sztuk produktu  \n" ;
+    	cout << "q. Wyjscie \n ";
     cout << "\n" ;
     cin >> editOptionChoice ;
     cout << "\n";
 
     switch (editOptionChoice) {
 		case '1':
-					cout << "wybor 1 \n";
 					this->editName(apteka);
 					cout << "\n";
 					break;
 		case '2':
-					cout << "wybor 2 \n";
+					this->editCategory(apteka);
 					cout << "\n";
 					break;
 		case '3':
-					cout << "wybor 3 \n";
+					this->editPrice(apteka);
 					cout << "\n";
 					break;
 		case '4':
-					cout << "wybor 3 \n";
+					this->editQuantity(apteka);
+					cout << "\n";
+					break;
+		case 'q':
 					cout << "\n";
 					break;
 		default:
 			cout << "Niepoprawne dane \n";
 		}
+		system("Pause");
     }while((editOptionChoice !='q'));
 }
 
