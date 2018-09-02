@@ -1,8 +1,8 @@
 /*
- * Warehouse.cpp
+ * LoginPanel.cpp
  *
- *  Created on: 29 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #include "Warehouse.h"
@@ -18,22 +18,27 @@ Warehouse::~Warehouse() {
 
 void Warehouse::addProduct(){
 	/*
-	 * Funkcja dodaj¹ca nowy produkt na koniec vectora, moze sie
-	 * przydac przy dodawaniu zupelnie nowego produktu
+	 * Funkcja dodaj¹ca nowy produkt na koniec vectora,
 	 */
 	int index, quantity;
 	float price;
-	string name;
+	string name, category, description, prescription;
 	//cout << "Podaj id (tymczasowe) " << endl ;
 	//cin >> index;
 	index = this->availableProducts.back().product_number + 1;
 	cout << "Podaj nazwe .. " << endl;
 	cin >> name;
+	cout << "Podaj kategorie /obecne kategorie ponizej/ .. " << endl;
+	cin >> category;
+	cout << "Podaj opis  .. " << endl;
+	cin >> description;
+	cout << "Podaj czy receptka wymagana T lub N  .. " << endl;
+	cin >> prescription;
 	cout << "Podaj cene ...  " << endl;
 	cin >> price;
 	cout << "Podaj Ilosc sztuk ... " << endl;
 	cin >> quantity ;
-	Product *p_temp = new Product(index, name, price, quantity);
+	Product *p_temp = new Product(index, name, category, description, price, quantity, prescription);
 	this->availableProducts.push_back(*p_temp);
 	delete p_temp; //Dopisany delete - Kamil
 }
@@ -181,21 +186,6 @@ void Warehouse::showProductDetailsThroughIndex(int index){
 		if(p.getProductNumber() == index){
 			p.display_full_information();
 			}
-	}
-}
-
-void Warehouse::changeProductQuantity(int quantity, int index){
-	this->showProductColumns();
-
-	for(Product p : this->availableProducts){
-		if(p.getProductNumber() == index){
-			cout << "ustawiam nowa wartosc ..." << endl;
-			p.setProductQuantity(quantity);
-			cout << endl;
-			cout << p.getProductQuantity() << endl ;
-		}
-		else
-			cout << "nie ustawiam nowej wartosc " << endl;
 	}
 }
 

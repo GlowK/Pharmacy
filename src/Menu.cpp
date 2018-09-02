@@ -1,8 +1,8 @@
 /*
- * Menu.cpp
+ * LoginPanel.cpp
  *
- *  Created on: 29 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #include "Menu.h"
@@ -34,7 +34,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
 			cout << "2) Przyjmij produkt na magazyn"<< endl;
-			cout << "3) Pokaz stan mgazynowy "<< endl;
+			cout << "3) Pokaz stan magazynowy "<< endl;
 			cout << "4) Usun produkt"<< endl;
 			cout << "5) Edycja danych produktow "<< endl;
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
@@ -57,21 +57,10 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					 */
 					apteka->addProduct();
 					break;
-				case 2: //Dodaj produkty
-					/*
-					 * TODO - Mozna zmienic na zmien ilosc produktow lub
-					 */
+				case 2: //Opcja do wykorzystania, dodaj sztuki przeniesione do edycji produktu
 				{
 					system("cls");
-					cout << "Podaj numer produktu do zmiany " << endl;
-					int index = 0;
-					cin >> index;
-					cout << "Podaj ilosc sztuk produktu do zmiany" << endl;
-					int quantity;
-					cin >> quantity;
-					apteka->changeProductQuantity(quantity, index);
-					//cout << "dodane" << endl;
-					//apteka->showProductsByID(index);
+					cout << "pusta opcja  " << endl;
 					system("Pause");
 					break;
 				}
@@ -99,9 +88,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					break;
 				}
 				case 5: //Zmien dane produktu
-					/*
-					 * TODO - Zmiana danych dla produktu z tablicy poprzez getery i settery
-					 */
+					menuOptions.editSubmenuOptions(apteka);
 					break;
 				case 6: //Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
 

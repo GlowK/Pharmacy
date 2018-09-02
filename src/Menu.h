@@ -1,8 +1,8 @@
 /*
- * Menu.h
+ * LoginPanel.cpp
  *
- *  Created on: 29 sie 2018
- *      Author: mediaexpert
+ *  Created on: 6 wrz 2018
+ *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
  */
 
 #ifndef MENU_H_
