@@ -10,6 +10,7 @@
 
 #include <string>
 #include <iomanip>
+#include "../Product.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ private:
 public:
 	ReceiptPosition();
 	ReceiptPosition(string, int, float);
+	ReceiptPosition(Product, int);
 	virtual ~ReceiptPosition();
 
 	float calculateSum();

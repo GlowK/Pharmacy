@@ -40,11 +40,12 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
 			cout << "7) Przeszukaj baze produktow" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
-			cout << "9) EXIT" << endl;
+			cout << "9) Sprzedaz prodktu" << endl;
+			cout << "10) EXIT" << endl;
 
 			if(user->status == 1)
 			{
-				cout << "10) Dodaj nowego uzytkownika" << endl;
+				cout << "11) Dodaj nowego uzytkownika" << endl;
 			}
 			cout << "Wybierz opcje: ";
 			cin >> menuChoice;
@@ -102,9 +103,17 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					system("Pause");
 					break;
 				case 9:
-					cout << "Zakonczenie dzialnia programu" << endl;
+				{
+					system("cls");
+					SalesMenu sm(apteka);
+					sm.showSalesMenu();
 					break;
+				}
 				case 10:
+					cout << "Zakonczenie dzialnia programu" << endl;
+					system("Pause");
+					break;
+				case 11:
 					if(user->status == 1)
 					{
 						user->AddNewUser();
@@ -119,7 +128,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					break;
 			}
 
-		}while(menuChoice != 9);
+		}while(menuChoice != 10);
 }
 
 //void Menu::showAdminMenu(){

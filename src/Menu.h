@@ -17,6 +17,7 @@
 #include "Warehouse.h"
 #include "User.h"
 #include "MenuOptions.h"
+#include "SalesMenu.h"
 
 using namespace std;
 
