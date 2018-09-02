@@ -71,6 +71,7 @@ void MenuOptions::eraseByID(Warehouse * apteka){
 	cin >> index;
 	SearchResult searchResult;
 	searchResult.populateSearchResultsById(apteka, index);
+	searchResult.showAllProducts();
 	cout << endl;
 	cout << "Czy na pewno chcesz skasowac ten produkt? T/N ";
 	if(choiceConfirmation()){
@@ -151,10 +152,7 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 		{
 			case 1 :
 			{
-				cout << "Podaj ID do pokazania szczeglow" << endl;
-				int byIndex = 0;
-				cin >> byIndex;
-				apteka->showProductDetailsThroughIndex(byIndex);
+				showDetailsById(apteka);
 				system("Pause");
 				break;
 			}
@@ -163,7 +161,9 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 				cout << "Podaj Nazwe dla pokazania szczegolow" << endl;
 				string byName;
 				cin >> byName;
-				//apteka->eraseElementByName(byName);
+				/*
+				 * TODO - Wprowadzic tu jakiesz wyszukiwaniae lub wywalic ta opcje
+				 */
 				system("Pause");
 				break;
 			}
@@ -174,6 +174,24 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 			default :
 				break;
 		}
+}
+
+void MenuOptions::showDetailsById(Warehouse *apteka){
+	cout << "Podaj ID do pokazania szczeglow" << endl;
+	int byIndex = 0;
+	cin >> byIndex;
+	SearchResult searchResult;
+	searchResult.populateSearchResultsById(apteka, byIndex);
+	if(searchResult.searchResults.size() == 0){
+		cout << "Brak takiego rekordu w bazie" << endl;
+		cout << "Czy chcesz powtorzyc zapytanie? T/N ";
+		if(choiceConfirmation()){
+			showDetailsById(apteka);
+			return;
+		}
+	}else{
+		apteka->showProductDetailsThroughIndex(byIndex);
+	}
 }
 
 
