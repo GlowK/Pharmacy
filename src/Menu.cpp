@@ -38,7 +38,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "4) Usun produkt"<< endl;
 			cout << "5) Edycja danych produktow "<< endl;
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
-			cout << "7) Przeszukaj baze produktów" << endl;
+			cout << "7) Przeszukaj baze produktow" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
 			cout << "9) EXIT" << endl;
 
@@ -82,19 +82,15 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					apteka->showAllProducts();
 					cout << endl;
 					system("Pause");
-					char isDetails = 'a';
+					cout << endl;
 					cout << "Czy chcesz wyswietlic szczegoly jakiegos produktu? T/N :";
-					cin >> isDetails;
-					if (isDetails == 'T' or isDetails == 't'){
+					if (menuOptions.choiceConfirmation()){
 						menuOptions.showProductDetailsOption(apteka, 0);
 					}
 					break;
 				}
 				case 4: // Kasowanie produktu
 				{
-					/*
-					 * TODO - wyswietleie produktu czy aby na pewno ten chemy skasowac T/N
-					 */
 					menuOptions.eraseProductOption(apteka);
 					break;
 				}
@@ -104,13 +100,9 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					 */
 					break;
 				case 6: //Wyswietl pe³ne informacje na temat danego produktu + d³ugi opis,
-
 					menuOptions.showProductDetailsOption(apteka, 1);
 					break;
 				case 7 : // Przeszukiwanie bazy produktów
-					/*
-					 * TODO -
-					 */
 					menuOptions.searchOption(apteka, 1);
 					break;
 				case 8:
@@ -134,7 +126,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					{
 						cout << "Niepoprawne dane" << endl;
 					}
-
+					break;
 				default:
 					cout << "Niepoprawne dane" << endl;
 					break;
@@ -143,38 +135,38 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 		}while(menuChoice != 9);
 }
 
-void Menu::showAdminMenu(){
-		char choice;
-		do
-		{
-
-			/*
-			 * TODO - CALA NOWA OPJCA FUNKCJI
-			 */
-
-			system("CLS");
-			cout << "Witaj a panelu administracyjnym" <<endl << endl;
-			cout << "1) Dodaj uzytkownika" <<endl;
-			cout << "2) Usun uzytkownika"<<endl;
-			cout << "3) C "<<endl;
-			cout << "4) D"<<endl;
-
-			cout << "Q) EXIT" <<endl;
-			cout << "Wybierz opcje: " << endl;
-			cin.get(choice);
-
-			switch (choice)
-			{
-				case '1': //Dodaj uzytkownika
-					break;
-				case '2': //Usun uzytkownika
-					break;
-				case '3': //
-					break;
-				case '4': //
-					break;
-				case 'Q':
-					break;
-			}
-		}while(choice != 'Q' or choice != 'q');
-}
+//void Menu::showAdminMenu(){
+//		char choice;
+//		do
+//		{
+//
+//			/*
+//			 * TODO - CALA NOWA OPJCA FUNKCJI
+//			 */
+//
+//			system("CLS");
+//			cout << "Witaj a panelu administracyjnym" <<endl << endl;
+//			cout << "1) Dodaj uzytkownika" <<endl;
+//			cout << "2) Usun uzytkownika"<<endl;
+//			cout << "3) C "<<endl;
+//			cout << "4) D"<<endl;
+//
+//			cout << "Q) EXIT" <<endl;
+//			cout << "Wybierz opcje: " << endl;
+//			cin.get(choice);
+//
+//			switch (choice)
+//			{
+//				case '1': //Dodaj uzytkownika
+//					break;
+//				case '2': //Usun uzytkownika
+//					break;
+//				case '3': //
+//					break;
+//				case '4': //
+//					break;
+//				case 'Q':
+//					break;
+//			}
+//		}while(choice != 'Q' or choice != 'q');
+//}

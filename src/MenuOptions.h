@@ -12,6 +12,8 @@
 #include "SearchResult.h"
 
 class MenuOptions {
+	//Wskaznik na Warehouse moglby byc czescia tej klasy, nie trzba byloby
+	//miec takiego wskaznika w kazdej metodzie
 public:
 	MenuOptions();
 	virtual ~MenuOptions();
@@ -29,8 +31,11 @@ public:
 	void eraseByID(Warehouse *);
 	void eraseByCategory(Warehouse*);
 
-	//confirmation
+	//confirmation -
 	bool choiceConfirmation();
+
+	//details
+	void showDetailsById(Warehouse *);
 };
 
 #endif /* MENUOPTIONS_H_ */
