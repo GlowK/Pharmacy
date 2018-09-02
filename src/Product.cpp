@@ -83,3 +83,12 @@ void Product::display_full_information(){
 	cout << setw(30) << left << "Dostepna ilosc: " << product_quantity <<endl;
 	cout << "*******************************" << endl;
 }
+
+ostream& operator << (ostream &out, const Product &p){
+	cout << setw(30) << left << "Nazwa produktu: " << p.product_name << endl;
+	cout << setw(30) << left << "Kategoria produktowa: " << p.product_category <<"\n";
+	cout << setw(30) << left << "Cena produktu:" <<  p.product_price << "\n";
+	cout << setw(30) << left << "Dostepna ilosc: " << p.product_quantity <<"\n";
+	return out;
+}
+

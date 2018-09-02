@@ -34,6 +34,8 @@ public:
 	void display_full_information();
 	virtual ~Product();
 
+	friend ostream& operator << (ostream &out, const Product &p);
+
 	const string& getProductName() const {
 		return product_name;
 	}
@@ -55,9 +57,7 @@ public:
 	}
 
 	void setProductQuantity(int changeQuantity)  {
-		//cout << this->product_quantity << endl;
-		this->product_quantity+=changeQuantity;
-		//cout << product_quantity << endl;
+		product_quantity=changeQuantity;
 	}
 
 	const string& getProductCategory() const {
