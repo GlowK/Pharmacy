@@ -335,8 +335,12 @@ void MenuOptions::editName(Warehouse *apteka){
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
 	cin >> indexFromUser;
+//	SearchResult searchResult;
+//	searchResult.populateSearchResultsById(apteka, indexFromUser);
+//	searchResult.showAllProducts();
 	cout << "Podaj nowa nazwe produktu " << endl;
 	cin >> prodName;
+
 	for(Product p : apteka->availableProducts){
 		if(p.getProductNumber() == indexFromUser){
 			indexToChange = i;
@@ -346,7 +350,10 @@ void MenuOptions::editName(Warehouse *apteka){
 	cout << "ustawiam nowa wartosc ...\n" ;
 	apteka->availableProducts[indexToChange].setProductName(prodName);
 	cout << "\n";
-	cout << apteka->availableProducts[indexToChange].getProductName() << "\n";
+	//cout << apteka->availableProducts[indexToChange].getProductName() << "\n";
+//	SearchResult searchResult2;
+//	searchResult2.populateSearchResultsById(apteka, indexFromUser);
+//	searchResult2.showAllProducts();
 }
 
 void MenuOptions::editCategory(Warehouse *apteka){
