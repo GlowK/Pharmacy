@@ -7,31 +7,74 @@
 
 #include "Receipt.h"
 
-Receipt::Receipt() : receiptId(recepitCount++){
-	time_t now = time(0);
-	sellTime = ctime(&now);
-
+void drawLine(){
+	int count = 30;
+	for (int i = 0; i<count ; i++){
+		cout << "*";
+	}
+	cout << endl;
 }
 
 Receipt::~Receipt() {
 	// TODO Auto-generated destructor stub
 }
 
-
-void Receipt::printReceipt(){
-	cout << "************************" << endl;
-	cout << "      Local Pharmacy    " << endl;
-	cout << "       00-840 Krakow    " << endl;
-	cout << "        UL. WLOSKA 1    " << endl;
-	cout << "     NIP 444-555-66-66  " << endl;
-	cout << "************************" << endl;
-	cout << "         RECEIPT        " << endl;
-	cout << "************************" << endl;
-	cout << sellTime;
-	cout << "************************" << endl;
-
+Receipt::Receipt() : receiptId(recepitCount++){
+	time_t now = time(0);
+	sellTime = ctime(&now);
+	sum = 0;
 
 }
 
+void Receipt::addPosition(ReceiptPosition position){
+	/*
+	 * TODO - Wyszukiwanie czy taka pozycja juz sie znajduje i tylko korekta ilosci
+	 */
+	this->positionsOnReceipt.push_back(position);
+	this->calculateSum();
+}
+
+void Receipt::calculateSum(){
+	float result = 0;
+	for(ReceiptPosition rp : this->positionsOnReceipt){
+		result += rp.calculateSum();
+	}
+	this->setSum(result);
+}
+
+void Receipt::printPositionsOnReceipt(){
+	for (ReceiptPosition rp : this->positionsOnReceipt){
+		string temp;
+		temp = rp.getPositionName();
+		temp.resize(12);
+		cout << temp << " ";
+		cout << setw(5) << rp.getQuantity() << "x ";
+		cout << fixed << setprecision(2) << setw(8) << right << rp.getSum();
+		cout <<  right << "zl" << endl;
+	}
+
+}
+
+void Receipt::printReceipt(){
+	drawLine();
+	cout << "         Local Pharmacy    " << endl;
+	cout << "          00-840 Krakow    " << endl;
+	cout << "           UL. WLOSKA 1    " << endl;
+	cout << "        NIP 444-555-66-66  " << endl;
+	drawLine();
+	cout << "            RECEIPT        " << endl;
+	drawLine();
+	cout << "   " << sellTime;
+	drawLine();
+	printPositionsOnReceipt();
+	drawLine();
+	cout << setw(10) << left << "SUM PLN: ";
+	cout << setw(18) << right << this->getSum() << "zl" << endl;
+	drawLine();
+
+}
+
+
+//cout << setw(idLength) << left << "ID" << "|";
 
 int Receipt::recepitCount = 0;

@@ -2,7 +2,7 @@
  * LoginPanel.cpp
  *
  *  Created on: 6 wrz 2018
- *      Author: Kamil G³owiñski, Bartosz So³oducha, Tomasz Siwiec, Piotr Kêpa
+ *      Author: Kamil GÂ³owiÃ±ski, Bartosz SoÂ³oducha, Tomasz Siwiec, Piotr KÃªpa
  */
 
 #include "MenuOptions.h"
