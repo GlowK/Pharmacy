@@ -7,11 +7,13 @@
 
 #ifndef MENU_H_
 #define MENU_H_
+
 #include <string>
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+
 #include "Warehouse.h"
 #include "User.h"
 #include "MenuOptions.h"
@@ -23,7 +25,7 @@ public:
 	Menu();
 	virtual ~Menu();
 	void showUserMenu(Warehouse *, User *);
-	void showAdminMenu();
+	//void showAdminMenu();
 };
 
 #endif /* MENU_H_ */

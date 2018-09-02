@@ -162,5 +162,5 @@ void SearchResult::populateSearchResultsById(Warehouse *apteka, int index){
 				this->searchResults.push_back(p);
 			}
 	}
-	this->showAllProducts();
+	//this->showAllProducts();
 }
