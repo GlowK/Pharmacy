@@ -31,6 +31,15 @@ public:
 
 	//confirmation
 	bool choiceConfirmation();
+
+	//menu editProduct product
+	void editSubmenuOptions(Warehouse *);
+	void editName(Warehouse *);
+	void editCategory(Warehouse *);
+	void editPrice(Warehouse*);
+	void editQuantity(Warehouse*);
+	void editDetalis(Warehouse*);
+
 };
 
 #endif /* MENUOPTIONS_H_ */
