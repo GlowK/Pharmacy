@@ -23,11 +23,23 @@ private:
 	char * sellTime;
 	static int recepitCount;
 	const int receiptId;
+	float sum;
 
 public:
 	Receipt();
 	virtual ~Receipt();
 	void printReceipt();
+	void printPositionsOnReceipt();
+	void addPosition(ReceiptPosition);
+	void calculateSum();
+
+	float getSum() const {
+		return sum;
+	}
+
+	void setSum(float sum) {
+		this->sum = sum;
+	}
 };
 
 #endif /* RECEIPT_RECEIPT_H_ */

@@ -150,8 +150,7 @@ int SearchResult::checkCategoryColumnLength(string s){
 }
 
 void SearchResult::sortSearchResultsByPrice(){
-	sort(this->searchResults.begin(), this->searchResults.end(),
-					[](const Product& p1, const Product &p2){
+	sort(this->searchResults.begin(), this->searchResults.end(), [](const Product& p1, const Product &p2){
 			return p1.product_price < p2.product_price;
 		});
 }
