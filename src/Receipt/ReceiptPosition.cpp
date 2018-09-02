@@ -18,6 +18,13 @@ ReceiptPosition::ReceiptPosition(string positionName, int quantity, float price)
 	this->sum = calculateSum();
 }
 
+ReceiptPosition::ReceiptPosition(Product p, int quantity){
+	this->positionName = p.getProductName();
+	this->price = p.getProductPrice();
+	this->quantity = quantity;
+	this->sum = calculateSum();
+
+}
 
 ReceiptPosition::~ReceiptPosition() {
 	// TODO Auto-generated destructor stub

@@ -163,3 +163,8 @@ void SearchResult::populateSearchResultsById(Warehouse *apteka, int index){
 	}
 	//this->showAllProducts();
 }
+
+void SearchResult::clearResults(){
+	this->categoryList.clear();
+	this->searchResults.clear();
+}

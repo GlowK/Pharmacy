@@ -42,6 +42,9 @@ public:
 	int checkNameColumnLength();
 	int checkCategoryColumnLength();
 	int checkCategoryColumnLength(string);
+
+	//Wyczysc wektor rezultatow;
+	void clearResults();
 };
 
 #endif /* SEARCHRESULT_H_ */

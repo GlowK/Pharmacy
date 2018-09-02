@@ -48,8 +48,8 @@ void Receipt::printPositionsOnReceipt(){
 		temp = rp.getPositionName();
 		temp.resize(12);
 		cout << temp << " ";
-		cout << setw(5) << rp.getQuantity() << "x ";
-		cout << fixed << setprecision(2) << setw(8) << right << rp.getSum();
+		cout << setw(5) << right << rp.getQuantity() << "x ";
+		cout << fixed << setprecision(2) << setw(8) << right << rp.getPrice();
 		cout <<  right << "zl" << endl;
 	}
 
