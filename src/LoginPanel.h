@@ -22,7 +22,7 @@ class LoginPanel {
 public:
 	LoginPanel();
 	virtual ~LoginPanel();
-	User ShowLoggingPanel(User);
+	void ShowLoggingPanel(User*);
 	bool IfExist();
 };
 

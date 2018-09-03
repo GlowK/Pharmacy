@@ -26,8 +26,9 @@ int main()
 
 	LoginPanel loginPanel;
 	User u1;
+	loginPanel.ShowLoggingPanel(&u1);
 
-	if(loginPanel.ShowLoggingPanel(u1).logged == true)
+	if(u1.logged == true)
 	{
 		Warehouse apteka;
 		apteka.fillWarehouseWithProducts();

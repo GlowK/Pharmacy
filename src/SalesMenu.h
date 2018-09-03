@@ -31,7 +31,8 @@ public:
 	//choiceConfirmation
 	bool choiceConfirmation();
 	void quantityCheck(SearchResult *);
-	void IDCheck(SearchResult *);
+	void idCheck(SearchResult *);
+	void nameCheck(SearchResult *);
 };
 
 #endif /* SALESMENU_H_ */
