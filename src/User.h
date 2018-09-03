@@ -39,6 +39,8 @@ public:
 	bool ConverterStringToBool(string txt);
 	void AddNewUser();
 
+
+
 };
 
 #endif /* USER_H_ */

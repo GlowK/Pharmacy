@@ -48,7 +48,7 @@ void SalesMenu::showSalesMenu(){
 			case '1':
 			{
 				SearchResult sr;
-				IDCheck(&sr);
+				idCheck(&sr);
 				if(choiceConfirmation()){
 					this->quantityCheck(&sr);
 				}
@@ -56,7 +56,12 @@ void SalesMenu::showSalesMenu(){
 				break;
 			}
 			case '2':
+			{
+				SearchResult sr;
+				nameCheck(&sr);
+				system("Pause");
 				break;
+			}
 			case '3':
 				break;
 			case '4':
@@ -101,6 +106,7 @@ void SalesMenu::quantityCheck(SearchResult *sr){
 	}else{
 		ReceiptPosition rp(sr->searchResults[0],quantity);
 		currentReceipt.addPosition(rp);
+		cout << "Na paragonie znajduje sie: " << endl;
 		currentReceipt.printPositionsOnReceipt();
 		MenuOptions *mo = new MenuOptions();
 		mo->editQuantitySubstract(w_pointer,quantity,sr->searchResults[0].getProductNumber());
@@ -109,7 +115,7 @@ void SalesMenu::quantityCheck(SearchResult *sr){
 	}
 }
 
-void SalesMenu::IDCheck(SearchResult * sr){
+void SalesMenu::idCheck(SearchResult * sr){
 	cout << "Wprowadz ID wyszukiwanego produktu: ";
 	int searchedID;
 	cin >> searchedID;
@@ -118,12 +124,60 @@ void SalesMenu::IDCheck(SearchResult * sr){
 		cout << "Przepraszamy. Nie ma takiego produktu w bazie" << endl;
 		cout << "Czy chcesz wyszukac ponownie? T/N ";
 		if(choiceConfirmation()){
-			IDCheck(sr);
+			idCheck(sr);
 			return;
 		}
 		return;
 	}
 	sr->showAllProducts();
 	cout << "\nCzy chcesz dodac ten produkt? T/N ";
+}
+
+void SalesMenu::nameCheck(SearchResult * sr){
+	cout << "Wprowadz nazwe wyszukiwanego produktu: ";
+	string searchedName;
+	cin >> searchedName;
+	sr->populateSearchRusultsByName(this->w_pointer, searchedName);
+	if(sr->searchResults.empty()){
+		cout << "Przepraszamy. Nie ma takiego produktu w bazie" << endl;
+		cout << "Czy chcesz wyszukac ponownie? T/N ";
+		if(choiceConfirmation()){
+			nameCheck(sr);
+			return;
+		}
+	}else if(sr->searchResults.size() > 1){
+		system("cls");
+		cout << "W bazie jest "<< sr->searchResults.size() << "wynikow spelniajacych kryteria" << endl;
+		sr->showAllProducts();
+		cout << "Czy chcesz wyszukac ponownie? 1/2"<< endl;
+		cout << "1) Podajac ID" << endl;
+		cout << "2) Podajac nazwe" << endl;
+		cout << "Inna opca: Anuluj"<< endl;
+		cout << "Podaj wartosc" << endl;
+		int choice = 0;
+		cin >> choice;
+		switch(choice){
+		case 1:
+		{
+			sr->clearResults();
+			idCheck(sr);
+			return;
+		}
+		case 2:
+		{
+			sr->clearResults();
+			nameCheck(sr);
+			return;
+		}
+		default:
+			cout << "Wychodze..." << endl;
+			system("Pause");
+			break;
+		}
+		return;
+	}else if(sr->searchResults.size() == 1){
+
+	}
+
 }
 
