@@ -64,7 +64,7 @@ void SalesMenu::showSalesMenu(){
 					ReceiptPosition rp(sr.searchResults[0],quantity);
 					currentReceipt.addPosition(rp);
 					currentReceipt.printPositionsOnReceipt();
-					MenuOptions *mo = new MenuOptions();
+					//MenuOptions *mo = new MenuOptions();
 
 					system("Pause");
 
