@@ -16,6 +16,19 @@ Menu::Menu() {
 Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
+int Menu::checkInput(){
+	int  menuChoice = 0;
+	bool bad = false;
+	cin >> menuChoice;
+	bad = cin.fail();
+	if(bad){
+		menuChoice = 220;
+	}
+	cin.clear();
+	cin.ignore();
+	return menuChoice;
+
+}
 
 void Menu::showUserMenu(Warehouse *apteka, User *user){
 		int  menuChoice = 0;
@@ -48,7 +61,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 				cout << "11) Dodaj nowego uzytkownika" << endl;
 			}
 			cout << "Wybierz opcje: ";
-			cin >> menuChoice;
+			menuChoice = checkInput();
 
 			switch (menuChoice)
 			{
@@ -96,7 +109,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 				case 8:
 					system("cls");
 					int quantity;
-					cout << " Produkty o niskim stanie. Ponizej :";
+					cout << "Podaj ponizej jakiej wartosci chcesz wyswietlic produkty:";
 					cin >> quantity;
 					apteka->showProductsLowQuantity(quantity);
 					cout << endl;
@@ -124,45 +137,11 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					}
 					break;
 				default:
+				{
 					cout << "Niepoprawne dane" << endl;
 					break;
+				}
 			}
 
 		}while(menuChoice != 10);
 }
-
-//void Menu::showAdminMenu(){
-//		char choice;
-//		do
-//		{
-//
-//			/*
-//			 * TODO - CALA NOWA OPJCA FUNKCJI
-//			 */
-//
-//			system("CLS");
-//			cout << "Witaj a panelu administracyjnym" <<endl << endl;
-//			cout << "1) Dodaj uzytkownika" <<endl;
-//			cout << "2) Usun uzytkownika"<<endl;
-//			cout << "3) C "<<endl;
-//			cout << "4) D"<<endl;
-//
-//			cout << "Q) EXIT" <<endl;
-//			cout << "Wybierz opcje: " << endl;
-//			cin.get(choice);
-//
-//			switch (choice)
-//			{
-//				case '1': //Dodaj uzytkownika
-//					break;
-//				case '2': //Usun uzytkownika
-//					break;
-//				case '3': //
-//					break;
-//				case '4': //
-//					break;
-//				case 'Q':
-//					break;
-//			}
-//		}while(choice != 'Q' or choice != 'q');
-//}

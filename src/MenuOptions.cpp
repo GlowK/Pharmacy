@@ -27,6 +27,20 @@ bool MenuOptions::choiceConfirmation(){
 	}
 }
 
+int MenuOptions::checkInput(int defaultValue){
+	int  menuChoice = 0;
+	bool bad = false;
+	cin >> menuChoice;
+	bad = cin.fail();
+	if(bad){
+		menuChoice = defaultValue;
+	}
+	cin.clear();
+	cin.ignore(10,'\n');
+	return menuChoice;
+
+}
+
 void MenuOptions::eraseProductOption(Warehouse * apteka){
 	system("cls");
 	cout << "W jaki sposob chcesz usunac produkty?" << endl;
@@ -36,7 +50,7 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 	cout << "4) Anuluj operacje" << endl;
 	cout << "Wprowadz wybor: ";
 	int eraseChoice = 0;
-	cin >> eraseChoice;
+	eraseChoice = checkInput(5);
 
 		switch(eraseChoice)
 		{
@@ -61,22 +75,38 @@ void MenuOptions::eraseProductOption(Warehouse * apteka){
 			case 4 :
 				break;
 			default :
+			{
+				cout << "Nieprawidlowa operacja. Przerywam..." << endl;
+				system("Pause");
 				break;
+			}
 		}
 }
 
 void MenuOptions::eraseByID(Warehouse * apteka){
 	cout << "Jaki produkt wg indeksu chcesz skasowac" << endl;
 	int index = 0;
-	cin >> index;
+	index = checkInput(-1);
 	SearchResult searchResult;
 	searchResult.populateSearchResultsById(apteka, index);
+	if(searchResult.searchResults.size() == 0){
+		cout << "Nie ma takiego indeksu" << endl;
+		searchResult.showAllProducts();
+		cout << "Czy chcesz ponowanie wpisac produkt? T/N ";
+		if(choiceConfirmation()){
+			eraseByID(apteka);
+			return;
+		}
+		return;
+	}
 	searchResult.showAllProducts();
 	cout << endl;
 	cout << "Czy na pewno chcesz skasowac ten produkt? T/N ";
 	if(choiceConfirmation()){
 		apteka->eraseElementById(index);
 		cout << "Produkt wykasowany" << endl;
+	}else{
+		cout << "Przerywam...";
 	}
 }
 

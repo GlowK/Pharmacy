@@ -44,9 +44,11 @@ public:
 	void editQuantitySubstract(Warehouse *, int, int);
 	void editQuantityAdd(Warehouse *, int, int);
 
-
 	//details
 	void showDetailsById(Warehouse *);
+
+	//sprawdzenie wprowadzonych danych
+	int checkInput(int);
 };
 
 #endif /* MENUOPTIONS_H_ */
