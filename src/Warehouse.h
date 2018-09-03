@@ -14,11 +14,14 @@
 #include <cstring>
 #include <stdlib.h>
 #include <sstream>
+
 #include "Product.h"
+#include "../src/Receipt/Receipt.h"
 
 class Warehouse {
 public:
 	vector<Product> availableProducts;
+	vector<Receipt> receiptArchive;
 
 public:
 	Warehouse();
@@ -36,6 +39,8 @@ public:
 	void showProductDetailsThroughIndex(int);
 	void changeProductQuantity(int, int); //Bartosz
 	void showProductsByID(int); //Bartosz
+	void addReceiptToReceiptArchive(Receipt);
+
 };
 
 #endif /* WAREHOUSE_H_ */

@@ -11,6 +11,7 @@
 #include "../src/Receipt/Receipt.h"
 #include "Warehouse.h"
 #include "SearchResult.h"
+#include "MenuOptions.h"
 
 using namespace std;
 
@@ -29,6 +30,8 @@ public:
 
 	//choiceConfirmation
 	bool choiceConfirmation();
+	void quantityCheck(SearchResult *);
+	void IDCheck(SearchResult *);
 };
 
 #endif /* SALESMENU_H_ */

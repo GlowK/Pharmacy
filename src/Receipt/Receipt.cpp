@@ -43,14 +43,17 @@ void Receipt::calculateSum(){
 }
 
 void Receipt::printPositionsOnReceipt(){
+	int i = 1;
 	for (ReceiptPosition rp : this->positionsOnReceipt){
 		string temp;
 		temp = rp.getPositionName();
 		temp.resize(12);
+		cout << i << ") ";
 		cout << temp << " ";
 		cout << setw(5) << right << rp.getQuantity() << "x ";
-		cout << fixed << setprecision(2) << setw(8) << right << rp.getPrice();
+		cout << fixed << setprecision(2) << setw(6) << right << rp.getPrice();
 		cout <<  right << "zl" << endl;
+		i++;
 	}
 
 }
@@ -73,8 +76,5 @@ void Receipt::printReceipt(){
 	drawLine();
 
 }
-
-
-//cout << setw(idLength) << left << "ID" << "|";
 
 int Receipt::recepitCount = 0;

@@ -199,3 +199,7 @@ void Warehouse::showProductsByID(int index){
 
 	}
 }
+
+void Warehouse::addReceiptToReceiptArchive(Receipt r){
+	this->receiptArchive.push_back(r);
+}

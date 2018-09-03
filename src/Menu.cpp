@@ -40,7 +40,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "6) Wyswietl szczegolowe dane produktu"<< endl;
 			cout << "7) Przeszukaj baze produktow" << endl;
 			cout << "8) Pokaz towary o niskim stanie magazynowym" << endl;
-			cout << "9) Sprzedaz prodktu" << endl;
+			cout << "9) Sprzedaz produktu" << endl;
 			cout << "10) EXIT" << endl;
 
 			if(user->status == 1)
