@@ -20,6 +20,7 @@ private:
 	int quantity;
 	float price;
 	float sum;
+	int productId;
 
 
 public:

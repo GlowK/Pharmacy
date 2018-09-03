@@ -23,6 +23,7 @@ ReceiptPosition::ReceiptPosition(Product p, int quantity){
 	this->price = p.getProductPrice();
 	this->quantity = quantity;
 	this->sum = calculateSum();
+	this->productId = p.getProductNumber();
 
 }
 
