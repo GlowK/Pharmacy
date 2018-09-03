@@ -39,38 +39,20 @@ void SalesMenu::showSalesMenu(){
 	    	cout << "3) Kategoria + ID \n" ;
 	    	cout << "4) Wyœwietl aktualne pozycje na paragonie \n";
 	    	cout << "5) Zatwierdz zamowienie i wydrukuj paragon \n";
-	    	cout << "Q) Anauluj zamowienie i wyjdz \n ";
+	    	cout << "Q) Anuluj zamowienie i wyjdz \n ";
 	    cout << "\n" ;
+	    cout << "Wprowadz wartosc: ";
 	    cin >> editOptionChoice ;
-	    cout << "\n";
 
 	    switch (editOptionChoice) {
 			case '1':
 			{
 				SearchResult sr;
-				cout << "Wprowadz ID wyszukiwanego produktu" << endl;
-				int searchedID;
-				cin >> searchedID;
-				sr.populateSearchResultsById(w_pointer, searchedID);
-				sr.showAllProducts();
-				cout << "Czy chcesz dodac ten produkt? T/N ";
+				IDCheck(&sr);
 				if(choiceConfirmation()){
-					int quantity;
-					cout << " Podaj liczbe sztuk";
-					cin >> quantity;
-					/*
-					 * TODO - Sprwadzenie czy podana ilosc jest na magazynie - Wazne
-					 */
-					ReceiptPosition rp(sr.searchResults[0],quantity);
-					currentReceipt.addPosition(rp);
-					currentReceipt.printPositionsOnReceipt();
-					//MenuOptions *mo = new MenuOptions();
-
-					system("Pause");
-
+					this->quantityCheck(&sr);
 				}
-
-
+				system("Pause");
 				break;
 			}
 			case '2':
@@ -78,12 +60,20 @@ void SalesMenu::showSalesMenu(){
 			case '3':
 				break;
 			case '4':
+			{
+				system("cls");
+				cout << "Pozycje na aktualnym paragonie :" << endl;
+				currentReceipt.printPositionsOnReceipt();
+				cout << endl << "Suma: " << this->currentReceipt.getSum() << "zl" <<endl;
+				system("Pause");
 				break;
+			}
 			case '5':
 			{
 				currentReceipt.printReceipt();
+				w_pointer->addReceiptToReceiptArchive(currentReceipt);
 				system("Pause");
-				return;
+				editOptionChoice = 'q';
 				break;
 			}
 
@@ -93,6 +83,47 @@ void SalesMenu::showSalesMenu(){
 				cout << "Niepoprawne dane \n";
 				system("Pause");
 			}
-	    }while((editOptionChoice !='q' || editOptionChoice !='Q'));
+	    }while(editOptionChoice !='q' && editOptionChoice !='Q');
+}
+
+void SalesMenu::quantityCheck(SearchResult *sr){
+	int quantity;
+	cout << "Podaj liczbe sztuk: ";
+	cin >> quantity;
+	if(sr->searchResults[0].getProductQuantity() <quantity ){
+		cout << "Wymagana ilosc nie znajduje sie na magazynie. " << "Max: " << sr->searchResults[0].getProductQuantity() << endl;
+		quantityCheck(sr);
+		return;
+	}else if( quantity < 0){
+		cout << "Wartosc ujemna nie jest przyjmowana " << "Min: 0 " <<  "Max: " << sr->searchResults[0].getProductQuantity() << endl;
+		quantityCheck(sr);
+		return;
+	}else{
+		ReceiptPosition rp(sr->searchResults[0],quantity);
+		currentReceipt.addPosition(rp);
+		currentReceipt.printPositionsOnReceipt();
+		MenuOptions *mo = new MenuOptions();
+		mo->editQuantitySubstract(w_pointer,quantity,sr->searchResults[0].getProductNumber());
+		delete mo;
+		return;
+	}
+}
+
+void SalesMenu::IDCheck(SearchResult * sr){
+	cout << "Wprowadz ID wyszukiwanego produktu: ";
+	int searchedID;
+	cin >> searchedID;
+	sr->populateSearchResultsById(this->w_pointer, searchedID);
+	if(sr->searchResults.empty()){
+		cout << "Przepraszamy. Nie ma takiego produktu w bazie" << endl;
+		cout << "Czy chcesz wyszukac ponownie? T/N ";
+		if(choiceConfirmation()){
+			IDCheck(sr);
+			return;
+		}
+		return;
+	}
+	sr->showAllProducts();
+	cout << "\nCzy chcesz dodac ten produkt? T/N ";
 }
 
