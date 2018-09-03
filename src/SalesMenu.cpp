@@ -49,9 +49,6 @@ void SalesMenu::showSalesMenu(){
 			{
 				SearchResult sr;
 				idCheck(&sr);
-				if(choiceConfirmation()){
-					this->quantityCheck(&sr);
-				}
 				system("Pause");
 				break;
 			}
@@ -63,7 +60,20 @@ void SalesMenu::showSalesMenu(){
 				break;
 			}
 			case '3':
+			{
+				SearchResult sr;
+				sr.populateCategoryList(w_pointer);
+				sr.showCategoryList();
+				cout << endl << "Wybierz kategorie: ";
+				int chosenCategory;
+				cin >> chosenCategory;
+				sr.populateSearchResultsByCategory(w_pointer, chosenCategory);
+				sr.showAllProducts();
+				sr.clearResults();
+				idCheck(&sr);
+				system("Pause");
 				break;
+			}
 			case '4':
 			{
 				system("cls");
@@ -75,6 +85,7 @@ void SalesMenu::showSalesMenu(){
 			}
 			case '5':
 			{
+				system("cls");
 				currentReceipt.printReceipt();
 				w_pointer->addReceiptToReceiptArchive(currentReceipt);
 				system("Pause");
@@ -131,6 +142,9 @@ void SalesMenu::idCheck(SearchResult * sr){
 	}
 	sr->showAllProducts();
 	cout << "\nCzy chcesz dodac ten produkt? T/N ";
+	if(choiceConfirmation()){
+		this->quantityCheck(sr);
+	}
 }
 
 void SalesMenu::nameCheck(SearchResult * sr){
@@ -147,9 +161,9 @@ void SalesMenu::nameCheck(SearchResult * sr){
 		}
 	}else if(sr->searchResults.size() > 1){
 		system("cls");
-		cout << "W bazie jest "<< sr->searchResults.size() << "wynikow spelniajacych kryteria" << endl;
+		cout << "W bazie jest "<< sr->searchResults.size() << " wynikow spelniajacych kryteria:" << endl;
 		sr->showAllProducts();
-		cout << "Czy chcesz wyszukac ponownie? 1/2"<< endl;
+		cout << endl <<"Czy chcesz wyszukac ponownie? 1/2"<< endl;
 		cout << "1) Podajac ID" << endl;
 		cout << "2) Podajac nazwe" << endl;
 		cout << "Inna opca: Anuluj"<< endl;
@@ -176,7 +190,11 @@ void SalesMenu::nameCheck(SearchResult * sr){
 		}
 		return;
 	}else if(sr->searchResults.size() == 1){
-
+		sr->showAllProducts();
+		cout << "\nCzy chcesz dodac ten produkt? T/N ";
+		if(choiceConfirmation()){
+			this->quantityCheck(sr);
+		}
 	}
 
 }
