@@ -72,6 +72,7 @@ void SalesMenu::showSalesMenu(){
 				sr.clearResults();
 				idCheck(&sr);
 				system("Pause");
+				//TestTest
 				break;
 			}
 			case '4':
