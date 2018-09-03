@@ -332,101 +332,102 @@ void MenuOptions::editSubmenuOptions(Warehouse *apteka){
 
 void MenuOptions::editName(Warehouse *apteka){
 	string prodName;
-	int indexFromUser=0;
-	apteka->showProductColumns();
+	int idFromUser=0;
 	int i = 0;
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> indexFromUser;
-//	SearchResult searchResult;
-//	searchResult.populateSearchResultsById(apteka, indexFromUser);
-//	searchResult.showAllProducts();
-	cout << "Podaj nowa nazwe produktu " << endl;
-	cin >> prodName;
-
+	cin >> idFromUser;
 	for(Product p : apteka->availableProducts){
-		if(p.getProductNumber() == indexFromUser){
+		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;
 		}
 		i++;
 	}
+	cout << apteka->availableProducts[indexToChange] << "\n";
+	cout << "Podaj nowa nazwe produktu " << endl;
+	cin >> prodName;
 	cout << "ustawiam nowa wartosc ...\n" ;
 	apteka->availableProducts[indexToChange].setProductName(prodName);
 	cout << "\n";
-	//cout << apteka->availableProducts[indexToChange].getProductName() << "\n";
-//	SearchResult searchResult2;
-//	searchResult2.populateSearchResultsById(apteka, indexFromUser);
-//	searchResult2.showAllProducts();
+	cout << apteka->availableProducts[indexToChange] << "\n";
 }
 
 void MenuOptions::editCategory(Warehouse *apteka){
 	string prodCat;
-	int indexFromUser=0;
-	apteka->showProductColumns();
+	int idFromUser=0;
 	int i = 0;
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> indexFromUser;
-	cout << "Podaj nowa kategorie produktu " << endl;
-	cin >> prodCat;
+	cin >> idFromUser;
 	for(Product p : apteka->availableProducts){
-		if(p.getProductNumber() == indexFromUser){
+		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;
 		}
 		i++;
 	}
+	cout << apteka->availableProducts[indexToChange] << "\n";
+	cout << "Podaj nowa kategorie produktu " << endl;
+	cin >> prodCat;
 	cout << "ustawiam nowa wartosc ...\n" ;
 	apteka->availableProducts[indexToChange].setProductCategory(prodCat);
 	cout << "\n";
-	cout << apteka->availableProducts[indexToChange].getProductCategory() << "\n";
+	cout << apteka->availableProducts[indexToChange] << "\n";
 }
 
 void MenuOptions::editPrice(Warehouse *apteka){
 	float prodPrice;
-	int indexFromUser=0;
-	apteka->showProductColumns();
+	int idFromUser=0;
 	int i = 0;
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> indexFromUser;
-	cout << "Podaj nowa cene produktu " << endl;
-	cin >> prodPrice;
+	cin >> idFromUser;
 	for(Product p : apteka->availableProducts){
-		if(p.getProductNumber() == indexFromUser){
+		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;
 		}
 		i++;
 	}
+	cout << apteka->availableProducts[indexToChange] << "\n";
+	cout << "Podaj nowa cene produktu " << endl;
+	cin >> prodPrice;
 	cout << "ustawiam nowa wartosc ...\n" ;
 	apteka->availableProducts[indexToChange].setProductPrice(prodPrice);
 	cout << "\n";
-	cout << apteka->availableProducts[indexToChange].getProductPrice() << "\n";
+	cout << apteka->availableProducts[indexToChange] << "\n";
 }
 
 void MenuOptions::editQuantity(Warehouse *apteka){
 	int prodQuant;
-	int indexFromUser=0;
-	apteka->showProductColumns();
+	int idFromUser=0;
 	int i = 0;
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> indexFromUser;
-	cout << "Podaj ilosc sztuk produktu do dodania " << endl;
-	cin >> prodQuant;
+	cin >> idFromUser;
 	for(Product p : apteka->availableProducts){
-		if(p.getProductNumber() == indexFromUser){
+		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;
 		}
 		i++;
 	}
+	cout << apteka->availableProducts[indexToChange] << "\n";
+	cout << "Podaj ilosc sztuk produktu do dodania " << endl;
+	cin >> prodQuant;
 	cout << "ustawiam nowa wartosc ...\n" ;
-	apteka->availableProducts[indexToChange].setProductQuantity(prodQuant);
+	editQuantityAdd(apteka, prodQuant, indexToChange);
 	cout << "\n";
-	cout << apteka->availableProducts[indexToChange].getProductQuantity() << "\n";
+	cout << apteka->availableProducts[indexToChange] << "\n";
+}
+
+void MenuOptions::editQuantitySubstract(Warehouse *apteka, int quantity, int id){
+	apteka->availableProducts[id].setProductQuantity( apteka->availableProducts[id].getProductQuantity() - quantity );
+}
+
+void MenuOptions::editQuantityAdd(Warehouse *apteka,int quantity, int id){
+	apteka->availableProducts[id].setProductQuantity( apteka->availableProducts[id].getProductQuantity() + quantity );
 }
 
 void MenuOptions::editDetalis(Warehouse *apteka){

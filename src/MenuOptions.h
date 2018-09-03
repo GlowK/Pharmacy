@@ -41,6 +41,8 @@ public:
 	void editPrice(Warehouse*);
 	void editQuantity(Warehouse*);
 	void editDetalis(Warehouse*);
+	void editQuantitySubstract(Warehouse *, int, int);
+	void editQuantityAdd(Warehouse *, int, int);
 
 
 	//details
