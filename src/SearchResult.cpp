@@ -120,7 +120,7 @@ void SearchResult::showAllProducts(){
 }
 
 int  SearchResult::checkNameColumnLength(){
-	int unsigned nameColumnLength = 2;
+	int unsigned nameColumnLength = 6;
 		for(Product p : this->searchResults){
 			if (p.getProductName().length() > nameColumnLength){
 				nameColumnLength = p.getProductName().length();
@@ -130,7 +130,7 @@ int  SearchResult::checkNameColumnLength(){
 }
 
 int SearchResult::checkCategoryColumnLength(){
-	int unsigned categoryColumnLenght = 2;
+	int unsigned categoryColumnLenght = 10;
 		for(Product p : this->searchResults){
 			if (p.getProductCategory().length() > categoryColumnLenght){
 				categoryColumnLenght = p.getProductCategory().length();
