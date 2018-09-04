@@ -153,13 +153,27 @@ void MenuOptions::eraseByCategory(Warehouse * apteka){
 	searchResult.showCategoryList();
 	cout << "Podaj numer kategorii, ktora chcesz skasowac" << endl;
 	int eraseCategory;
-	cin >> eraseCategory;
-	string eraseCat = searchResult.populateSearchResultsByCategoryReturnCategoryName(apteka, eraseCategory);
-	searchResult.showAllProducts();
-	cout << "Czy na pewno chcesz skasowac te produkty? T/N ";
-	if(choiceConfirmation()){
-		apteka->eraseElementByCategory(eraseCat);
-		cout << "Produkty wykasowane" << endl;
+	eraseCategory = checkInput(-1);
+	if(eraseCategory <= -1 || eraseCategory >= signed(searchResult.categoryList.size())){
+		cout << "Nie ma takiego indeksu" << endl;
+		searchResult.showAllProducts();
+		cout << "Czy chcesz ponowic zapytanie? T/N" << endl;
+		if(choiceConfirmation()){
+			system("cls");
+			eraseByCategory(apteka);
+			return;
+		}
+		return;
+	}else{
+		string eraseCat = searchResult.populateSearchResultsByCategoryReturnCategoryName(apteka, eraseCategory);
+		searchResult.showAllProducts();
+		if(searchResult.searchResults.size() >= 1){
+			cout << "Czy na pewno chcesz skasowac te produkty? T/N ";
+			if(choiceConfirmation()){
+				apteka->eraseElementByCategory(eraseCat);
+				cout << "Produkty wykasowane" << endl;
+			}
+		}
 	}
 }
 
@@ -176,7 +190,7 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 	cout << "Wprowadz wybor: ";
 
 	int showDetailsChoice = 0;
-	cin >> showDetailsChoice;
+	showDetailsChoice= checkInput(4);
 
 		switch(showDetailsChoice)
 		{
@@ -192,7 +206,7 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 				string byName;
 				cin >> byName;
 				/*
-				 * TODO - Wprowadzic tu jakiesz wyszukiwaniae lub wywalic ta opcje
+				 * TODO - Wprowadzic tu jakiesz wyszukiwaniae lub wywalic te opcje
 				 */
 				system("Pause");
 				break;
@@ -202,6 +216,8 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 				system("Pause");
 				break;
 			default :
+				cout << "Nieprawidlowa operacja. Przerywam.." << endl;
+				system("Pause");
 				break;
 		}
 }
@@ -209,7 +225,7 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 void MenuOptions::showDetailsById(Warehouse *apteka){
 	cout << "Podaj ID do pokazania szczeglow" << endl;
 	int byIndex = 0;
-	cin >> byIndex;
+	byIndex = checkInput(-1);
 	SearchResult searchResult;
 	searchResult.populateSearchResultsById(apteka, byIndex);
 	if(searchResult.searchResults.size() == 0){
@@ -237,7 +253,7 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 	cout << "Wprowadz wybor: ";
 
 	int searchOptionChoice = 0;
-	cin >> searchOptionChoice;
+	searchOptionChoice = checkInput(-1);
 
 		switch(searchOptionChoice)
 		{
@@ -264,6 +280,8 @@ void MenuOptions::searchOption(Warehouse *apteka, int clearScreenFlag){
 				system("Pause");
 				break;
 			default :
+				cout << "Niepoprawna operacja. Przerywam..." << endl;
+				system("Pause");
 				break;
 		}
 }
@@ -276,7 +294,7 @@ void MenuOptions::categorySearch(Warehouse * apteka){
 	int rangeControl = searchResult.showCategoryList();
 	cout<< endl << "Podaj numer kategorii do wyswietelnia: ";
 	int categoryNumber;
-	cin >> categoryNumber;
+	categoryNumber = checkInput(-1);
 	if(categoryNumber < 0 || categoryNumber > rangeControl){
 		cout << "Nie ma takiej kategorii. Przerywam..." << endl;
 		system("Pause");
