@@ -38,7 +38,19 @@ int MenuOptions::checkInput(int defaultValue){
 	cin.clear();
 	cin.ignore(10,'\n');
 	return menuChoice;
+}
 
+float MenuOptions::checkInput(float defaultValue){
+	float  menuChoice = 0;
+	bool bad = false;
+	cin >> menuChoice;
+	bad = cin.fail();
+	if(bad){
+		menuChoice = defaultValue;
+	}
+	cin.clear();
+	cin.ignore(10,'\n');
+	return menuChoice;
 }
 
 void MenuOptions::eraseProductOption(Warehouse * apteka){
@@ -324,10 +336,10 @@ void MenuOptions::priceSearch(Warehouse * apteka){
 	cout << "********** Wyszukiwanie po cenie (min/max) **********" << endl;
 	cout << "Podaj minimalna wartosc minimalna: ";
 	float minValue;
-	cin >> minValue;
+	minValue = checkInput(0);
 	cout << "Podaj wartosc maksymalna: ";
 	float maxValue;
-	cin >> maxValue;
+	maxValue = checkInput(0);
 	cout << endl;
 	SearchResult searchResult;
 	searchResult.populateSearchResultsByPrice(apteka, minValue, maxValue);

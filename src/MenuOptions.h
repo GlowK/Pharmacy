@@ -49,6 +49,7 @@ public:
 
 	//sprawdzenie wprowadzonych danych
 	int checkInput(int);
+	float checkInput(float);
 };
 
 #endif /* MENUOPTIONS_H_ */

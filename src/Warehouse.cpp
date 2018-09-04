@@ -45,7 +45,7 @@ void Warehouse::addProduct(){
 
 
 int  Warehouse::checkNameColumnLength(){
-	int unsigned nameColumnLength = 2;
+	int unsigned nameColumnLength = 6;
 		for(Product p : this->availableProducts){
 			if (p.getProductName().length() > nameColumnLength){
 				nameColumnLength = p.getProductName().length();
@@ -55,7 +55,7 @@ int  Warehouse::checkNameColumnLength(){
 }
 
 int Warehouse::checkCategoryColumnLength(){
-	int unsigned categoryColumnLenght = 2;
+	int unsigned categoryColumnLenght = 10;
 		for(Product p : this->availableProducts){
 			if (p.getProductCategory().length() > categoryColumnLenght){
 				categoryColumnLenght = p.getProductCategory().length();
