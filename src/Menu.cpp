@@ -17,6 +17,19 @@ Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
 
+int Menu::checkInput(){
+	int  menuChoice = 0;
+	bool bad = false;
+	cin >> menuChoice;
+	bad = cin.fail();
+	if(bad){
+		menuChoice = 220;
+	}
+	cin.clear();
+	cin.ignore();
+	return menuChoice;
+}
+
 void Menu::showUserMenu(Warehouse *apteka, User *user){
 		int  menuChoice = 0;
 		MenuOptions menuOptions;
@@ -55,7 +68,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 				cout << "12) Usun uzytkownika" << endl;
 			}
 			cout << "Wybierz opcje: ";
-			cin >> menuChoice;
+			menuChoice = checkInput();
 
 			switch (menuChoice)
 			{
@@ -103,7 +116,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 				case 8:
 					system("cls");
 					int quantity;
-					cout << " Produkty o niskim stanie. Ponizej :";
+					cout << "Podaj ponizej jakiej wartosci chcesz wyswietlic produkty:";
 					cin >> quantity;
 					apteka->showProductsLowQuantity(quantity);
 					cout << endl;
@@ -139,10 +152,12 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					{
 						cout << "Niepoprawne dane" << endl;
 					}
-									break;
+					break;
 				default:
+				{
 					cout << "Niepoprawne dane" << endl;
 					break;
+				}
 			}
 
 		}while(menuChoice != 10);

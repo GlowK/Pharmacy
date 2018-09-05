@@ -27,6 +27,8 @@ public:
 	virtual ~Menu();
 	void showUserMenu(Warehouse *, User *);
 	//void showAdminMenu();
+	//CheckInput
+	int checkInput();
 };
 
 #endif /* MENU_H_ */
