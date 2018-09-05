@@ -38,7 +38,7 @@ void LoginPanel::ShowLoggingPanel(User *u1)
 			if(u1->enteredPassword == u1->passwordFromFile)
 			{
 				cout << "-----------------------------------------------" << endl;
-				cout << "Pomyœlnie zalogowano jako ";
+				cout << "Pomyslnie zalogowano jako ";
 				if(u1->status == true)
 				{
 					cout << "administrator";
@@ -71,7 +71,7 @@ void LoginPanel::ShowLoggingPanel(User *u1)
 		else
 		{
 			//je¿eli nie znajdzie u¿ytkownika o takim loginie
-			cout << "Brak u¿ytkownika o loginie: " << u1->enteredLogin << endl;
+			cout << "Brak uzytkownika o loginie: " << u1->enteredLogin << endl;
 			cout << "Czy chcesz sprobowac zalogowac siê ponownie? (y/n)" << endl;
 			cin >> a;
 
