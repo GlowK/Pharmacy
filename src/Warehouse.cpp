@@ -98,7 +98,7 @@ void Warehouse::fillWarehouseWithProducts(){
 	 */
 	fstream inputfile;
 	string line;
-	inputfile.open("../src/test3.csv", ios::in);
+	inputfile.open("../src/bazaDanychLekow.csv", ios::in);
 
 	while(getline(inputfile,line)){
 		istringstream iss(line);
