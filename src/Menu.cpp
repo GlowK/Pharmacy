@@ -61,13 +61,13 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "9) Sprzedaz produktu" << endl;
 			cout << "10) EXIT" << endl;
 
-			cout << "Narzedzia administratora: " << endl;
+			cout << "\nNarzedzia administratora: " << endl;
 			if(user->status == 1)
 			{
 				cout << "11) Dodaj nowego uzytkownika" << endl;
 				cout << "12) Usun uzytkownika" << endl;
 			}
-			cout << "Wybierz opcje: ";
+			cout << "\nWybierz opcje: ";
 			menuChoice = checkInput();
 
 			switch (menuChoice)
