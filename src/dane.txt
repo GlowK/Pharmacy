@@ -1,6 +1,7 @@
-qazqwe|qazqwe123|Jan|Kowalski|1
 admin|admin|Andrzej|Nowak|1
-login|login|Jan|Kowalski|1
-login2|haslo2|Jan|Kowalski|0
-login3|haslo3|Jan|Kowalski|0
-ala|makota|Ala|Kot|1
+login|haslo|Jan|Kowalski|1
+login2|haslo2|Zygmunt|Nowak|0
+login3|haslo3|imie3|nazwisko3|1
+login4|haslo4|imie4|nazwisko4|0
+login5|haslo5|imie5|nazwisko5|0
+login6|haslo6|imie6|nazwisko6|0

@@ -27,6 +27,7 @@ public:
 	string enteredLogin;
 	string enteredPassword;
 	string temporary[5];
+	string userData;
 
 	int amountDataToLoad = 5;
 	int line;
@@ -38,6 +39,8 @@ public:
 	void DownloadingDataFromFile();
 	bool ConverterStringToBool(string txt);
 	void AddNewUser();
+	bool DeleteUser();
+	int DataValue();
 
 
 

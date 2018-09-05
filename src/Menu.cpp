@@ -16,6 +16,7 @@ Menu::Menu() {
 Menu::~Menu() {
 	// TODO Auto-generated destructor stub
 }
+
 int Menu::checkInput(){
 	int  menuChoice = 0;
 	bool bad = false;
@@ -27,7 +28,6 @@ int Menu::checkInput(){
 	cin.clear();
 	cin.ignore();
 	return menuChoice;
-
 }
 
 void Menu::showUserMenu(Warehouse *apteka, User *user){
@@ -38,12 +38,17 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 		do
 		{
 			system("cls");
-			cout << "***************Pomyœlnie zalogowano jako ";
+			cout << "--------------------Pomyslnie zalogowano jako ";
 			if(user->status == 1)
 				cout << "administator ";
 			else
 				cout << "uzytkownik ";
-			cout << user->loginFromFile << "***************" << endl;
+			cout << "--------------------" << endl;
+			cout << "                Login: " << user->loginFromFile << "   Imie: " << user->name << "   Nazwisko: "
+				 << user->surname << endl;
+			cout << "-------------------------------------------------------------------------------" << endl;
+
+
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
 			cout << "2) Przyjmij produkt na magazyn"<< endl;
@@ -56,9 +61,11 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 			cout << "9) Sprzedaz produktu" << endl;
 			cout << "10) EXIT" << endl;
 
+			cout << "Narzedzia administratora: " << endl;
 			if(user->status == 1)
 			{
 				cout << "11) Dodaj nowego uzytkownika" << endl;
+				cout << "12) Usun uzytkownika" << endl;
 			}
 			cout << "Wybierz opcje: ";
 			menuChoice = checkInput();
@@ -128,8 +135,18 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					break;
 				case 11:
 					if(user->status == 1)
-					{
 						user->AddNewUser();
+					else
+						cout << "Niepoprawne dane" << endl;
+					break;
+				case 12:
+					if(user->status == 1)
+					{
+						system("cls");
+						if(user->DeleteUser() == true)
+							cout << "Pomyslnie usunieto uzytkwnika!" << endl;
+						else
+							cout << "Usuniecie uzytkownika nie powiodlo sie!" << endl;
 					}
 					else
 					{
