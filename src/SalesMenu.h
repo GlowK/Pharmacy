@@ -33,6 +33,7 @@ public:
 	void quantityCheck(SearchResult *);
 	void idCheck(SearchResult *);
 	void nameCheck(SearchResult *);
+	void returnProductToShelves();
 };
 
 #endif /* SALESMENU_H_ */
