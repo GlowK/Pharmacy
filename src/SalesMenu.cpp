@@ -95,7 +95,10 @@ void SalesMenu::showSalesMenu(){
 			}
 
 			case 'q':
+			{
+				returnProductToShelves();
 				break;
+			}
 			default:
 				cout << "Niepoprawne dane \n";
 				system("Pause");
@@ -198,5 +201,13 @@ void SalesMenu::nameCheck(SearchResult * sr){
 		}
 	}
 
+}
+
+void SalesMenu::returnProductToShelves(){
+	MenuOptions *mo = new MenuOptions;
+	for(ReceiptPosition rp : currentReceipt.getPositionsOnReceipt()){
+		mo->editQuantityAdd(w_pointer, rp.getQuantity(), rp.getProductId());
+	}
+	delete mo;
 }
 

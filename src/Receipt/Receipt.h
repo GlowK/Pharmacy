@@ -40,6 +40,10 @@ public:
 	void setSum(float sum) {
 		this->sum = sum;
 	}
+
+	const vector<ReceiptPosition>& getPositionsOnReceipt() const {
+		return positionsOnReceipt;
+	}
 };
 
 #endif /* RECEIPT_RECEIPT_H_ */

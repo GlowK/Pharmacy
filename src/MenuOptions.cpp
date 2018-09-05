@@ -214,12 +214,7 @@ void MenuOptions::showProductDetailsOption(Warehouse * apteka, int clearScreenFl
 			}
 			case 2 :
 			{
-				cout << "Podaj Nazwe dla pokazania szczegolow" << endl;
-				string byName;
-				cin >> byName;
-				/*
-				 * TODO - Wprowadzic tu jakiesz wyszukiwaniae lub wywalic te opcje
-				 */
+				showDetailsByName(apteka);
 				system("Pause");
 				break;
 			}
@@ -249,6 +244,39 @@ void MenuOptions::showDetailsById(Warehouse *apteka){
 		}
 	}else{
 		apteka->showProductDetailsThroughIndex(byIndex);
+	}
+}
+
+void MenuOptions::showDetailsByName(Warehouse *apteka){
+	cout << "Podaj Nazwe dla pokazania szczegolow" << endl;
+	string byName;
+	cin >> byName;
+	SearchResult searchResult;
+	searchResult.populateSearchRusultsByName(apteka, byName);
+	if(searchResult.searchResults.size() == 0){
+		cout << "Brak takiego rekordu w bazie" << endl;
+		cout << "Czy chcesz powtorzyc zapytanie? T/N ";
+		if(choiceConfirmation()){
+			showDetailsByName(apteka);
+			return;
+		}
+		return;
+	}else if(searchResult.searchResults.size() == 1){
+		int byIndex = -1;
+		for(Product p : apteka->availableProducts){
+			if(p.getProductName() == byName){
+				byIndex = p.getProductNumber();
+			}
+		}
+		apteka->showProductDetailsThroughIndex(byIndex);
+	}else if(searchResult.searchResults.size() > 1){
+		searchResult.showAllProducts();
+		cout << "Czy chcesz powtorzyc zapytanie? T/N ";
+		if(choiceConfirmation()){
+			showDetailsByName(apteka);
+			return;
+		}
+		return;
 	}
 }
 

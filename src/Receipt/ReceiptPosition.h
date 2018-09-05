@@ -46,6 +46,10 @@ public:
 	float getSum() const {
 		return sum;
 	}
+
+	int getProductId() const {
+		return productId;
+	}
 };
 
 #endif /* RECEIPT_RECEIPTPOSITION_H_ */

@@ -35,7 +35,6 @@ public:
 	void sortSearchResultsByPrice();
 	/*
 	 * Cztery kolejne funkcje to powtorzony kod z Warehouse z innym Ÿrod³em danych
-	 * Moze da³oby sie stworzyc jakas klase/intereface do wyœwietlania tych elementow i tam powtorzyc kod
 	 */
 	void showProductColumns();
 	void showAllProducts();

@@ -46,6 +46,7 @@ public:
 
 	//details
 	void showDetailsById(Warehouse *);
+	void showDetailsByName(Warehouse *);
 
 	//sprawdzenie wprowadzonych danych
 	int checkInput(int);
