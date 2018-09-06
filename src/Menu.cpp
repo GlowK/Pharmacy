@@ -51,7 +51,7 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 
 			cout << "Dostepne opcje wyboru" << endl;
 			cout << "1) Stworz produkt" << endl;
-			cout << "2) Przyjmij produkt na magazyn"<< endl;
+			cout << "2) Wygeneruj zamowienie produktow "<< endl;
 			cout << "3) Pokaz stan magazynowy "<< endl;
 			cout << "4) Usun produkt"<< endl;
 			cout << "5) Edycja danych produktow "<< endl;
@@ -78,11 +78,9 @@ void Menu::showUserMenu(Warehouse *apteka, User *user){
 					 */
 					apteka->addProduct();
 					break;
-				case 2: //Opcja do wykorzystania, dodaj sztuki przeniesione do edycji produktu
+				case 2: //Opcja do rozszerzenia o uzupelnienie magazynu
 				{
-					system("cls");
-					cout << "pusta opcja  " << endl;
-					system("Pause");
+					apteka->orderProducts();
 					break;
 				}
 				case 3: // Wypisywanie wszystkich produktow

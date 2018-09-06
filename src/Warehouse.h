@@ -22,6 +22,7 @@ class Warehouse {
 public:
 	vector<Product> availableProducts;
 	vector<Receipt> receiptArchive;
+	vector<Product> orderProductList;
 
 public:
 	Warehouse();
@@ -40,6 +41,7 @@ public:
 	void changeProductQuantity(int, int); //Bartosz
 	void showProductsByID(int); //Bartosz
 	void addReceiptToReceiptArchive(Receipt);
+	void orderProducts();
 
 };
 

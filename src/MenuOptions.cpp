@@ -471,7 +471,7 @@ void MenuOptions::editPrice(Warehouse *apteka){
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> idFromUser;
+	idFromUser = checkInput(-1);
 	for(Product p : apteka->availableProducts){
 		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;
@@ -494,7 +494,7 @@ void MenuOptions::editQuantity(Warehouse *apteka){
 	int indexToChange=0;
 	system("cls");
 	cout << "Podaj numer produktu do zmiany " << endl;
-	cin >> idFromUser;
+	idFromUser = checkInput(-1);
 	for(Product p : apteka->availableProducts){
 		if(p.getProductNumber() == idFromUser){
 			indexToChange = i;

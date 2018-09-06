@@ -203,3 +203,39 @@ void Warehouse::showProductsByID(int index){
 void Warehouse::addReceiptToReceiptArchive(Receipt r){
 	this->receiptArchive.push_back(r);
 }
+
+
+void Warehouse::orderProducts(){
+	system("cls");
+	int quantity;
+	cout << "Podaj ilosc sztuk, ponizej ktorej chcesz realizowac zamowienie:";
+	cin >> quantity;
+	cout << endl;
+	for(Product p : this->availableProducts){
+		if(p.getProductQuantity() <= quantity){
+			p.display_product(this->checkNameColumnLength(), this->checkCategoryColumnLength());
+			cout << endl;
+			cout << "jest sztuk : " << p.getProductQuantity() << endl;
+			cout << "ile sztuk zamowic \n";
+			int orderQuantity;
+			cin >> orderQuantity;
+			p.setProductQuantity(orderQuantity);
+			this->orderProductList.push_back(p);
+		}
+	}
+	system("cls");
+	cout << "            -------        " << endl;
+	cout << "         Local Pharmacy    " << endl;
+	cout << "          00-840 Krakow    " << endl;
+	cout << "           UL. WLOSKA 1    " << endl;
+	cout << "        NIP 444-555-66-66  " << endl;
+	cout << "            -------        " << endl;
+	cout << "          zamowienie       " << endl;
+	cout << endl;
+	this->showProductColumns();
+	for(Product p : this->orderProductList){
+		p.display_product(this->checkNameColumnLength(), this->checkCategoryColumnLength());
+	}
+	system("Pause");
+
+}
